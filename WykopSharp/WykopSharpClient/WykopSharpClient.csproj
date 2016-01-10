@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7F34F0B4-86CB-42CA-938B-2A78A60ADA87}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WykopSharpClient</RootNamespace>
+    <AssemblyName>WykopSharpClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiV1Constants.cs" />
+    <Compile Include="Enumerable\Entry.cs" />
+    <Compile Include="Enumerable\Period.cs" />
+    <Compile Include="Enumerable\Rank.cs" />
+    <Compile Include="Enumerable\Sort.cs" />
+    <Compile Include="Exception\ApiClientIsNotSupportedException.cs" />
+    <Compile Include="Model\BooleanResponse.cs" />
+    <Compile Include="Model\BuryReason.cs" />
+    <Compile Include="Model\DigResponse.cs" />
+    <Compile Include="Model\RecivedCount.cs" />
+    <Compile Include="Model\Tag.cs" />
+    <Compile Include="Repository\AbstractRepository.cs" />
+    <Compile Include="Repository\AddRepository.cs" />
+    <Compile Include="Repository\Builder\IQuery.cs" />
+    <Compile Include="Repository\Builder\RelatedQuery.cs" />
+    <Compile Include="Repository\Builder\SearchQuery.cs" />
+    <Compile Include="Repository\ConversationRepository.cs" />
+    <Compile Include="Repository\FavoritiesRepository.cs" />
+    <Compile Include="Repository\LinkRepository.cs" />
+    <Compile Include="Repository\LinksRepository.cs" />
+    <Compile Include="Repository\MyWykopRepository.cs" />
+    <Compile Include="Repository\ObservatoryRepository.cs" />
+    <Compile Include="Repository\PopularRepository.cs" />
+    <Compile Include="Repository\RankRepository.cs" />
+    <Compile Include="Repository\RelatedRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\ProfileRepository.cs" />
+    <Compile Include="Repository\EntryRepository.cs" />
+    <Compile Include="Repository\CommentRepository.cs" />
+    <Compile Include="Model\Bury.cs" />
+    <Compile Include="Model\Comment.cs" />
+    <Compile Include="Model\Constants\Constants.cs" />
+    <Compile Include="Model\Constants\Errors.cs" />
+    <Compile Include="Model\ConversationList.cs" />
+    <Compile Include="Model\Dig.cs" />
+    <Compile Include="Model\Embed.cs" />
+    <Compile Include="Model\Entry.cs" />
+    <Compile Include="Model\EntryComment.cs" />
+    <Compile Include="Model\RecivedResponses.cs" />
+    <Compile Include="Model\Link.cs" />
+    <Compile Include="Model\Login.cs" />
+    <Compile Include="Model\MyWykop.cs" />
+    <Compile Include="Model\Notification.cs" />
+    <Compile Include="Model\PMMessage.cs" />
+    <Compile Include="Model\Profile.cs" />
+    <Compile Include="Model\RelatedLink.cs" />
+    <Compile Include="Repository\SearchRepository.cs" />
+    <Compile Include="Repository\StreamRepository.cs" />
+    <Compile Include="Repository\TagRepository.cs" />
+    <Compile Include="Repository\TagsRepository.cs" />
+    <Compile Include="Repository\TopRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="WykopSharpClient.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WykopSharpClientFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WykopApi\WykopSharp.csproj">
+      <Project>{c63cab8f-c036-4064-9f65-0391169b5e5c}</Project>
+      <Name>WykopSharp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
