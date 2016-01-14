@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using WykopSharp;
+using WykopSharp.Model;
 using WykopSharpClient.Model;
 
 namespace WykopSharpClient.Repository
@@ -31,7 +32,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<List<Link>> Added(string profileName, int page)
+        public Task<List<Link>> Added(string profileName, int page = 1)
         {
             if (string.IsNullOrWhiteSpace(profileName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(profileName));
@@ -50,7 +51,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<List<Link>> Published(string profileName, int page)
+        public Task<List<Link>> Published(string profileName, int page = 1)
         {
             if (string.IsNullOrWhiteSpace(profileName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(profileName));
@@ -69,7 +70,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<List<Link>> Commented(string profileName, int page)
+        public Task<List<Link>> Commented(string profileName, int page = 1)
         {
             if (string.IsNullOrWhiteSpace(profileName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(profileName));
@@ -88,7 +89,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<List<Comment>> Comments(string profileName, int page)
+        public Task<List<Comment>> Comments(string profileName, int page = 1)
         {
             if (string.IsNullOrWhiteSpace(profileName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(profileName));
@@ -107,7 +108,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<List<Link>> Digged(string profileName, int page)
+        public Task<List<Link>> Digged(string profileName, int page = 1)
         {
             if (string.IsNullOrWhiteSpace(profileName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(profileName));
@@ -126,7 +127,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<List<Link>> Buried(string profileName, int page)
+        public Task<List<Link>> Buried(string profileName, int page = 1)
         {
             if (string.IsNullOrWhiteSpace(profileName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(profileName));

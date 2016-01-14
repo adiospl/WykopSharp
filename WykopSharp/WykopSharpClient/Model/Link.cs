@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class Link
+    public class Link : BaseResponse
     {
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
@@ -52,13 +53,13 @@ namespace WykopSharpClient.Model
         public Uri AuthorAvatarBig { get; set; }
 
         [JsonProperty(PropertyName = "author_avatar_med")]
-        public Uri AuthorAvatarMedium { get; set; }
+        public Uri AuthorAvatarMed { get; set; }
 
         [JsonProperty(PropertyName = "author_avatar_lo")]
-        public Uri AuthorAvatarLow { get; set; }
+        public Uri AuthorAvatarLo { get; set; }
 
         [JsonProperty(PropertyName = "author_sex")]
-        public string AuthorGender { get; set; }
+        public string AuthorSex { get; set; }
 
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
@@ -67,10 +68,10 @@ namespace WykopSharpClient.Model
         public string Group { get; set; }
 
         [JsonProperty(PropertyName = "preview")]
-        public string Preview { get; set; }
+        public Uri Preview { get; set; }
 
         [JsonProperty(PropertyName = "user_vote")]
-        public string UserVote { get; set; }
+        public bool UserVote { get; set; }
 
         [JsonProperty(PropertyName = "user_favorite")]
         public bool UserFavorite { get; set; }
@@ -79,7 +80,7 @@ namespace WykopSharpClient.Model
         public bool UserObserve { get; set; }
 
         [JsonProperty(PropertyName = "user_lists")]
-        public List<object> UserLists { get; set; }
+        public List<int> UserLists { get; set; }
 
         [JsonProperty(PropertyName = "plus18")]
         public bool Plus18 { get; set; }
@@ -103,12 +104,15 @@ namespace WykopSharpClient.Model
         public string CategoryName { get; set; }
 
         [JsonProperty(PropertyName = "violation_url")]
-        public Uri ViolationUrl { get; set; }
+        public string ViolationUrl { get; set; }
 
         [JsonProperty(PropertyName = "info")]
         public object Info { get; set; }
 
         [JsonProperty(PropertyName = "app")]
-        public object App { get; set; }
+        public string App { get; set; }
+
+        [JsonProperty(PropertyName = "own_content")]
+        public object OwnContent { get; set; }
     }
 }

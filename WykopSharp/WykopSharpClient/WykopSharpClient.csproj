@@ -52,13 +52,12 @@
     <Compile Include="Enumerable\Entry.cs" />
     <Compile Include="Enumerable\Period.cs" />
     <Compile Include="Enumerable\Rank.cs" />
-    <Compile Include="Enumerable\Sort.cs" />
+    <Compile Include="Enumerable\PromotedSort.cs" />
     <Compile Include="Exception\ApiClientIsNotSupportedException.cs" />
-    <Compile Include="Model\BooleanResponse.cs" />
     <Compile Include="Model\BuryReason.cs" />
-    <Compile Include="Model\DigResponse.cs" />
-    <Compile Include="Model\RecivedCount.cs" />
     <Compile Include="Model\Tag.cs" />
+    <Compile Include="Model\TopYear.cs" />
+    <Compile Include="Model\Voter.cs" />
     <Compile Include="Repository\AbstractRepository.cs" />
     <Compile Include="Repository\AddRepository.cs" />
     <Compile Include="Repository\Builder\IQuery.cs" />

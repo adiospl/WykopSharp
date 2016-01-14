@@ -23,16 +23,6 @@ namespace WykopSharpClient
         public const string CommentsMinus = "Comments/Minus";
         public const string CommentsEdit = "Comments/Edit";
         public const string CommentsDelete = "Comments/Delete";
-        public const string CommentsIndex = "Comments/Index";
-        public const string CommentsDig = "Comments/Dig";
-        public const string CommentsCancel = "Comments/Cancel";
-        public const string CommentsBury = "Comments/Bury";
-        public const string CommentsReports = "Comments/Reports";
-        public const string CommentsDigs = "Comments/Digs";
-        public const string CommentsRelated = "Comments/RelatedQuery";
-        public const string CommentsBuryreasons = "Comments/Buryreasons";
-        public const string CommentsObserve = "Comments/Observe";
-        public const string CommentsFavorite = "Comments/Favorite";
 
         #endregion
 
@@ -42,12 +32,13 @@ namespace WykopSharpClient
         public const string LinkDig = "Link/Dig";
         public const string LinkCancel = "Link/Cancel";
         public const string LinkBury = "Link/Bury";
-        public const string LinkComments = "Link/Comment";
+        public const string LinkComments = "Link/Comments";
         public const string LinkReports = "Link/Reports";
         public const string LinkDigs = "Link/Digs";
-        public const string LinkRelated = "Link/RelatedQuery";
+        public const string LinkRelated = "Link/Related";
         public const string LinkObserve = "Link/Observe";
         public const string LinkFavorite = "Link/Favorite";
+        public const string LinkBuryreasons = "Link/Buryreasons";
 
         #endregion
 

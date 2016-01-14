@@ -1,9 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
+using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class Dig
+    public class Dig : BaseResponse
     {
         [JsonProperty(PropertyName = "author")]
         public string Author { get; set; }
@@ -19,5 +20,6 @@ namespace WykopSharpClient.Model
 
         [JsonProperty(PropertyName = "author_group")]
         public int AuthorGroup { get; set; }
+
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
+using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class Embed
+    public class Embed : BaseResponse
     {
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

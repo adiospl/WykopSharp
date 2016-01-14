@@ -69,6 +69,8 @@
     <Compile Include="Exceptions\UnsupportedHttpMethodException.cs" />
     <Compile Include="IMethodParameter.cs" />
     <Compile Include="MethodParameters.cs" />
+    <Compile Include="Model\BaseResponse.cs" />
+    <Compile Include="Model\BooleanResponse.cs" />
     <Compile Include="Model\ErrorResponse.cs" />
     <Compile Include="Model\HtmlResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

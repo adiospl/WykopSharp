@@ -49,7 +49,7 @@ namespace WykopSharp
         }
     }
 
-    public class StringMethodParameter : IMethodParameter
+    public class StringMethodParameter : IMethodParameter, IComparable<StringMethodParameter>
     {
         public StringMethodParameter(string name, long value)
             : this(name, value.ToString())
@@ -92,6 +92,11 @@ namespace WykopSharp
                 return false;
 
             return Name == other.Name && Value == eq.Value;
+        }
+
+        public int CompareTo(StringMethodParameter obj)
+        {
+            return string.Compare(Name, obj.Name, StringComparison.Ordinal);
         }
     }
 

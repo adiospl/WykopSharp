@@ -1,9 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
+using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class PmMessage
+    public class PmMessage : BaseResponse
     {
         [JsonProperty(PropertyName = "author")]
         public string Author { get; set; }

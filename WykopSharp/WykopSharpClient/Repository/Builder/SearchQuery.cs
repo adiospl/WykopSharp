@@ -17,14 +17,14 @@ namespace WykopSharpClient.Repository.Builder
         private string _what;
         private string _when;
 
-        private SortedSet<PostParameter> _query =>
-            _query ?? new SortedSet<PostParameter>();
+        private readonly SortedSet<PostParameter> _query = new SortedSet<PostParameter>();
 
         public void Build()
         {
             foreach (var p in Fields().Where(parameter => parameter != null))
             {
-                _query.Add(new StringPostParameter(p.Item1, p.Item2));
+                if(!string.IsNullOrEmpty(p.Item2))
+                    _query.Add(new StringPostParameter(p.Item1, p.Item2));
             }
         }
 
@@ -63,13 +63,13 @@ namespace WykopSharpClient.Repository.Builder
 
         public SearchQuery WithDateFrom(DateTime from)
         {
-            _from = from.ToString(CultureInfo.InvariantCulture);
+            _from = String.Format("yyyy/MM/dd", from);
             return this;
         }
 
         public SearchQuery WithDateTo(DateTime to)
         {
-            _to = to.ToString(CultureInfo.InvariantCulture);
+            _to = String.Format("yyyy/MM/dd", to);
             return this;
         }
 

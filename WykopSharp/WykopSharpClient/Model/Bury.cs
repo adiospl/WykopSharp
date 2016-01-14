@@ -1,9 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
+using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class Bury
+    public class Bury : BaseResponse
     {
         [JsonProperty(PropertyName = "reason")]
         public int Reason { get; set; }

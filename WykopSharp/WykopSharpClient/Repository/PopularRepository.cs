@@ -16,10 +16,10 @@ namespace WykopSharpClient.Repository
         {
         }
 
-        public Task<List<Link>> Promoted(int page, Sort sort)
+        public Task<List<Link>> Promoted(int page, PromotedSort promotedSort)
         {
             if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
-            if (!Enum.IsDefined(typeof (Sort), sort)) throw new ArgumentOutOfRangeException(nameof(sort));
+            if (!Enum.IsDefined(typeof (PromotedSort), promotedSort)) throw new ArgumentOutOfRangeException(nameof(promotedSort));
 
             var parameters = GetApiParameterSet();
 
@@ -28,10 +28,10 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<List<Link>> Upcomming(int page, Sort sort)
+        public Task<List<Link>> Upcomming(int page, PromotedSort promotedSort)
         {
             if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
-            if (!Enum.IsDefined(typeof (Sort), sort)) throw new ArgumentOutOfRangeException(nameof(sort));
+            if (!Enum.IsDefined(typeof (PromotedSort), promotedSort)) throw new ArgumentOutOfRangeException(nameof(promotedSort));
 
             var parameters = GetApiParameterSet();
 

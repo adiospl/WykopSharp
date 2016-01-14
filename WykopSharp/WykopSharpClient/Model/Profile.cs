@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
+using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class Profile
+    public class Profile : BaseResponse
     {
         [JsonProperty(PropertyName = "login")]
         public string Login { get; set; }
@@ -17,7 +19,7 @@ namespace WykopSharpClient.Model
         public string Name { get; set; }
 
         [JsonProperty(PropertyName = "www")]
-        public string Website { get; set; }
+        public Uri Website { get; set; }
 
         [JsonProperty(PropertyName = "Jabber")]
         public string Jabber { get; set; }
@@ -74,30 +76,30 @@ namespace WykopSharpClient.Model
         public string SignupDate { get; set; }
 
         [JsonProperty(PropertyName = "avatar")]
-        public string Avatar { get; set; }
+        public Uri Avatar { get; set; }
 
         [JsonProperty(PropertyName = "avatar_big")]
-        public string AvatarBig { get; set; }
+        public Uri AvatarBig { get; set; }
 
         [JsonProperty(PropertyName = "avatar_med")]
-        public string AvatarMedium { get; set; }
+        public Uri AvatarMedium { get; set; }
 
         [JsonProperty(PropertyName = "avatar_lo")]
-        public string AvatarLow { get; set; }
+        public Uri AvatarLow { get; set; }
 
         [JsonProperty(PropertyName = "is_observed")]
-        public object IsObserved { get; set; }
+        public bool IsObserved { get; set; }
 
         [JsonProperty(PropertyName = "is_blocked")]
-        public object IsBlocked { get; set; }
+        public bool IsBlocked { get; set; }
 
         [JsonProperty(PropertyName = "sex")]
         public string Gender { get; set; }
 
         [JsonProperty(PropertyName = "url")]
-        public string Url { get; set; }
+        public Uri Url { get; set; }
 
         [JsonProperty(PropertyName = "violation_url")]
-        public object ViolationUrl { get; set; }
+        public Uri ViolationUrl { get; set; }
     }
 }

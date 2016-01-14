@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using WykopSharp;
+using WykopSharp.Model;
 using WykopSharpClient.Enumerable;
 using WykopSharpClient.Model;
 

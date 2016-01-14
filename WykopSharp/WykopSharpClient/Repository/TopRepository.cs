@@ -14,7 +14,7 @@ namespace WykopSharpClient.Repository
         {
         }
 
-        public Task<List<Link>> Index(int year)
+        public Task<TopYear> Index(int year)
         {
             if (year <= 2004) throw new ArgumentOutOfRangeException(nameof(year));
 
@@ -24,12 +24,12 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", year)
             };
             
-            return Client.CallApiMethodWithAuth<List<Link>>(
+            return Client.CallApiMethodWithAuth<TopYear>(
                 new ApiMethod(ApiV1Constants.TopIndex, HttpMethod.Get, parameters, methodParameter)
                 );
         }
         
-        public Task<List<Link>> Index(DateTime date)
+        public Task<TopYear> Index(DateTime date)
         {
             return Index(date.Year);
         }

@@ -1,9 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
+using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class EntryComment
+    public class EntryComment : BaseResponse
     {
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }

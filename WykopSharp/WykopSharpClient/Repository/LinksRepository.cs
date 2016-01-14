@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using WykopSharp;
 using WykopSharpClient.Enumerable.Links;
+using WykopSharpClient.Enumerable.Search;
 using WykopSharpClient.Model;
 
 namespace WykopSharpClient.Repository
@@ -16,7 +17,7 @@ namespace WykopSharpClient.Repository
         {
         }
 
-        public Task<List<Link>> Promoted(int page, Sort sort)
+        public Task<List<Link>> Promoted(int page, PromotedSort sort)
         {
             if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
             if (!Enum.IsDefined(typeof (Sort), sort)) throw new ArgumentOutOfRangeException(nameof(sort));
@@ -33,7 +34,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<List<Link>> Upcomming(int page, Sort sort)
+        public Task<List<Link>> Upcomming(int page, UpcommingSort sort)
         {
             if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
             if (!Enum.IsDefined(typeof (Sort), sort)) throw new ArgumentOutOfRangeException(nameof(sort));

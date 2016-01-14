@@ -1,9 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
+using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class Notification
+    public class Notification : BaseResponse
     {
         [JsonProperty(PropertyName = "new")]
         public bool New;

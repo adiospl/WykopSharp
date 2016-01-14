@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
+using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class RelatedLink
+    public class RelatedLink : BaseResponse
     {
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
@@ -32,16 +34,16 @@ namespace WykopSharpClient.Model
         public int AuthorGroup { get; set; }
 
         [JsonProperty(PropertyName = "author_avatar")]
-        public string AuthorAvatar { get; set; }
+        public Uri AuthorAvatar { get; set; }
 
         [JsonProperty(PropertyName = "author_avatar_big")]
-        public string AuthorAvatarBig { get; set; }
+        public Uri AuthorAvatarBig { get; set; }
 
         [JsonProperty(PropertyName = "author_avatar_med")]
-        public string AuthorAvatarMedium { get; set; }
+        public Uri AuthorAvatarMedium { get; set; }
 
         [JsonProperty(PropertyName = "author_avatar_lo")]
-        public string AuthorAvatarLow { get; set; }
+        public Uri AuthorAvatarLow { get; set; }
 
         [JsonProperty(PropertyName = "link")]
         public Link Link { get; set; }

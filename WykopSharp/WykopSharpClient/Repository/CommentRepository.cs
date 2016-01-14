@@ -15,7 +15,31 @@ namespace WykopSharpClient.Repository
         {
         }
 
-        public Task<RecivedId> Add(string body, Uri embed)
+        public Task<RecivedId> Add(string body, int linkId, int precedentCommentId = -1)
+        {
+            if (string.IsNullOrWhiteSpace(body))
+                throw new ArgumentException("Argument is null or whitespace", nameof(body));
+            if (linkId <= 0) throw new ArgumentOutOfRangeException(nameof(linkId));
+
+            var parameters = GetApiParameterSet();
+            var methodParameters = new SortedSet<StringMethodParameter>
+            {
+                new StringMethodParameter("param1", linkId)
+            };
+            if(precedentCommentId != -1)
+                methodParameters.Add(new StringMethodParameter("param2", precedentCommentId));
+
+            var postParameters = new SortedSet<PostParameter>
+            {
+                new StringPostParameter("body", body)
+            };
+
+            return Client.CallApiMethodWithAuth<RecivedId>(
+                new ApiMethod(ApiV1Constants.CommentsAdd, HttpMethod.Post, parameters, methodParameters, postParameters)
+                );
+        }
+
+        public Task<RecivedId> Add(string body, Uri embed, int linkId, int precedentCommentId = -1)
         {
             if (embed == null)
                 throw new ArgumentNullException(nameof(embed));
@@ -25,6 +49,13 @@ namespace WykopSharpClient.Repository
                 throw new ArgumentException("Argument is null or whitespace", nameof(body));
 
             var parameters = GetApiParameterSet();
+            var methodParameters = new SortedSet<StringMethodParameter>
+            {
+                new StringMethodParameter("param1", linkId)
+            };
+            if (precedentCommentId != -1)
+                methodParameters.Add(new StringMethodParameter("param2", precedentCommentId));
+
             var postParameters = new SortedSet<PostParameter>
             {
                 new StringPostParameter("body", body),
@@ -32,17 +63,24 @@ namespace WykopSharpClient.Repository
             };
 
             return Client.CallApiMethodWithAuth<RecivedId>(
-                new ApiMethod(ApiV1Constants.CommentsAdd, HttpMethod.Post, parameters, postParameters)
+                new ApiMethod(ApiV1Constants.CommentsAdd, HttpMethod.Post, parameters, methodParameters, postParameters)
                 );
         }
 
-        public Task<RecivedId> Add(string body, ByteFile file)
+        public Task<RecivedId> Add(string body, ByteFile file, int linkId, int precedentCommentId = -1)
         {
             if (file == null) throw new ArgumentNullException(nameof(file));
             if (String.IsNullOrWhiteSpace(body))
                 throw new ArgumentException("Argument is null or whitespace", nameof(body));
 
             var parameters = GetApiParameterSet();
+            var methodParameters = new SortedSet<StringMethodParameter>
+            {
+                new StringMethodParameter("param1", linkId)
+            };
+            if (precedentCommentId != -1)
+                methodParameters.Add(new StringMethodParameter("param2", precedentCommentId));
+
             var postParameters = new SortedSet<PostParameter>
             {
                 new StringPostParameter("body", body),
@@ -50,7 +88,7 @@ namespace WykopSharpClient.Repository
             };
             
             return Client.CallApiMethodWithAuth<RecivedId>(
-                new ApiMethod(ApiV1Constants.CommentsAdd, HttpMethod.Post, parameters, postParameters)
+                new ApiMethod(ApiV1Constants.CommentsAdd, HttpMethod.Post, parameters, methodParameters, postParameters)
                 );
         }
 

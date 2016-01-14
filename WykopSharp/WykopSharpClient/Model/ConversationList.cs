@@ -1,9 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
+using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class ConversationList
+    public class ConversationList : BaseResponse
     {
         [JsonProperty(PropertyName = "last_update")]
         public DateTime LastUpdate { get; set; }

@@ -1,9 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
+using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class Login
+    public class Login : BaseResponse
     {
         [JsonProperty(PropertyName = "login")]
         public string Username { get; set; }

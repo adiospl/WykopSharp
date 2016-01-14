@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -143,12 +144,16 @@ namespace WykopSharp
 
                     var stringResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     var responseType = ValidateErrors(stringResponse);
-
-                    if (responseType == ResponseType.Html)
-                        return new HtmlResponse()
-                        {
-                            Html = stringResponse
-                        }.GetResult<TResult>();
+                    
+                    switch (responseType)
+                    {
+                        case ResponseType.Html:
+                            return (dynamic) new HtmlResponse() { Html = stringResponse };
+                        case ResponseType.ValueArray:
+                            // API is incosistent - return array with boolean,
+                            // but i don't know is that the only one behaviour
+                            return (dynamic) new BooleanResponse(stringResponse);
+                    }
 
                     using (var reader = new JsonTextReader(new StringReader(stringResponse)))
                     {
@@ -169,13 +174,23 @@ namespace WykopSharp
             request.Headers.Add("User-Agent", WykopConstants.UserAgent);
         }
 
+        private bool CheckIsStringResponseArray(string responseString)
+        {
+            return (responseString.StartsWith("[") && !responseString.Contains("{")) ? true : false;
+        }
+
+        private bool CheckIsStringResponseHTML(string responseString)
+        {
+            return responseString.StartsWith("<!DOCTYPE HTML>");
+        }
+
         protected ResponseType ValidateErrors(string response)
         {
             using (var reader = new JsonTextReader(new StringReader(response)))
             {
                 var serializer = CreateSerializer(null);
-                if (response.StartsWith("<!DOCTYPE HTML>"))
-                    return ResponseType.Html;
+                if (CheckIsStringResponseHTML(response)) return ResponseType.Html;
+                if (CheckIsStringResponseArray(response)) return ResponseType.ValueArray;
 
                 var errorResult = serializer.Deserialize<ErrorResponse>(reader) ?? ErrorResponse.None();
                 if(errorResult.Error == null || errorResult.Error.Code == 0)

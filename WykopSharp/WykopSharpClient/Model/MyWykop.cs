@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class MyWykop
+    public class MyWykop : BaseResponse
     {
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

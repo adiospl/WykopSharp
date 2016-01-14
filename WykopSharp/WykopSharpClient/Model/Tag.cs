@@ -1,6 +1,8 @@
-﻿namespace WykopSharpClient.Model
+﻿using WykopSharp.Model;
+
+namespace WykopSharpClient.Model
 {
-    public class Tag
+    public class Tag : BaseResponse
     {
     }
 }
