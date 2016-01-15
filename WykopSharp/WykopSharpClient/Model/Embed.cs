@@ -1,13 +1,15 @@
 ﻿using System;
 using Newtonsoft.Json;
 using WykopSharp.Model;
+using WykopSharpClient.Model.Constants;
 
 namespace WykopSharpClient.Model
 {
     public class Embed : BaseResponse
     {
+        [JsonConverter(typeof(EmbedTypeConverter))]
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
+        public EmbedType Type { get; set; }
 
         [JsonProperty(PropertyName = "preview")]
         public Uri Preview { get; set; }

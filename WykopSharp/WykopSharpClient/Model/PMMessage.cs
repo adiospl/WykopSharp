@@ -30,6 +30,9 @@ namespace WykopSharpClient.Model
         [JsonProperty(PropertyName = "date")]
         public DateTime Date { get; set; }
 
+        [JsonProperty(PropertyName = "last_update")]
+        public DateTime LastUpdate { get; set; }
+
         [JsonProperty(PropertyName = "body")]
         public string Body { get; set; }
 

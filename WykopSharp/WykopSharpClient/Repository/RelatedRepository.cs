@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using WykopSharp;
@@ -21,11 +22,14 @@ namespace WykopSharpClient.Repository
             if (relatedId <= 0) throw new ArgumentOutOfRangeException(nameof(relatedId));
             
             var parameters = GetApiParameterSet();
-            parameters.Add(new ApiParameter("param1", linkId));
-            parameters.Add(new ApiParameter("param2", relatedId));
-            
+            var methodParameters = new SortedSet<StringMethodParameter>
+            {
+                new StringMethodParameter("param1", linkId),
+                new StringMethodParameter("param2", relatedId)
+            };
+
             return Client.CallApiMethodWithAuth<RecivedVote>(
-                new ApiMethod(ApiV1Constants.RelatedPlus, HttpMethod.Get, parameters)
+                new ApiMethod(ApiV1Constants.RelatedPlus, HttpMethod.Get, parameters, methodParameters)
                 );
         }
 
@@ -35,23 +39,29 @@ namespace WykopSharpClient.Repository
             if (relatedId <= 0) throw new ArgumentOutOfRangeException(nameof(relatedId));
 
             var parameters = GetApiParameterSet();
-            parameters.Add(new ApiParameter("param1", linkId));
-            parameters.Add(new ApiParameter("param2", relatedId));
+            var methodParameters = new SortedSet<StringMethodParameter>
+            {
+                new StringMethodParameter("param1", linkId),
+                new StringMethodParameter("param2", relatedId)
+            };
 
             return Client.CallApiMethodWithAuth<RecivedVote>(
-                new ApiMethod(ApiV1Constants.RelatedMinus, HttpMethod.Get, parameters)
+                new ApiMethod(ApiV1Constants.RelatedMinus, HttpMethod.Get, parameters, methodParameters)
                 );
         }
 
+        /*
+            It returns id : false, but succeed
+        */
         public Task<RecivedId> Add(int linkId, RelatedQuery query)
         {
             if (linkId <= 0) throw new ArgumentOutOfRangeException(nameof(linkId));
 
             var parameters = GetApiParameterSet();
-            parameters.Add(new ApiParameter("param1", linkId));
+            var methodParameter = new SortedSet<StringMethodParameter> {new ApiParameter("param1", linkId)};
 
             return Client.CallApiMethodWithAuth<RecivedId>(
-                new ApiMethod(ApiV1Constants.RelatedAdd, HttpMethod.Post, parameters, query.GetQuery())
+                new ApiMethod(ApiV1Constants.RelatedAdd, HttpMethod.Post, parameters, methodParameter, query.GetQuery())
                 );
         }
     }

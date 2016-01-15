@@ -110,9 +110,9 @@ namespace WykopSharpClient
 
         #region RELATED
 
-        public const string RelatedPlus = "RelatedQuery/Plus";
-        public const string RelatedMinus = "RelatedQuery/Minus";
-        public const string RelatedAdd = "RelatedQuery/Add";
+        public const string RelatedPlus = "Related/Plus";
+        public const string RelatedMinus = "Related/Minus";
+        public const string RelatedAdd = "Related/Add";
 
         #endregion
 
@@ -166,10 +166,10 @@ namespace WykopSharpClient
 
         #region FAVORITES
 
-        public const string FavoritiesIndex = "Favorities/Index";
-        public const string FavoritiesComments = "Favorities/Comments";
-        public const string FavoritiesEntries = "Favorities/Entries";
-        public const string FavoritiesLists = "Favorities/Lists";
+        public const string FavoritesIndex = "Favorites/Index";
+        public const string FavoritesComments = "Favorites/Comments";
+        public const string FavoritesEntries = "Favorites/Entries";
+        public const string FavoritesLists = "Favorites/Lists";
 
         #endregion
 

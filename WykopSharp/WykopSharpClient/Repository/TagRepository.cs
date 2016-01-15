@@ -16,7 +16,7 @@ namespace WykopSharpClient.Repository
         {
         }
 
-        public Task<List<object>> Index(string tagName, int page = 1)
+        public Task<Tag> Index(string tagName, int page = 1)
         {
             if (string.IsNullOrWhiteSpace(tagName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(tagName));
@@ -30,12 +30,12 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", tagName.Replace("#", ""))
             };
 
-            return Client.CallApiMethodWithAuth<List<object>>(
+            return Client.CallApiMethodWithAuth<Tag>(
                 new ApiMethod(ApiV1Constants.TagIndex, HttpMethod.Get, parameters, methodParameters)
                 );
         }
 
-        public Task<List<object>> Links(string tagName, int page = 1)
+        public Task<Tag> Links(string tagName, int page = 1)
         {
             if (string.IsNullOrWhiteSpace(tagName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(tagName));
@@ -49,12 +49,12 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", tagName.Replace("#", ""))
             };
 
-            return Client.CallApiMethodWithAuth<List<object>>(
+            return Client.CallApiMethodWithAuth<Tag>(
                 new ApiMethod(ApiV1Constants.TagLinks, HttpMethod.Get, parameters, methodParameters)
                 );
         }
 
-        public Task<List<object>> Entries(string tagName, int page = 1)
+        public Task<Tag> Entries(string tagName, int page = 1)
         {
             if (string.IsNullOrWhiteSpace(tagName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(tagName));
@@ -68,7 +68,7 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", tagName.Replace("#", ""))
             };
 
-            return Client.CallApiMethodWithAuth<List<object>>(
+            return Client.CallApiMethodWithAuth<Tag>(
                 new ApiMethod(ApiV1Constants.TagEntries, HttpMethod.Get, parameters, methodParameters)
                 );
         }

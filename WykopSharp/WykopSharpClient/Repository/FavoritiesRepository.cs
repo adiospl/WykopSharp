@@ -26,7 +26,7 @@ namespace WykopSharpClient.Repository
             };
 
             return Client.CallApiMethodWithAuth<List<Link>>(
-                new ApiMethod(ApiV1Constants.FavoritiesIndex, HttpMethod.Get, parameters, methodParameters)
+                new ApiMethod(ApiV1Constants.FavoritesIndex, HttpMethod.Get, parameters, methodParameters)
                 );
         }
 
@@ -35,7 +35,7 @@ namespace WykopSharpClient.Repository
             var parameters = GetApiParameterSet();
 
             return Client.CallApiMethodWithAuth<List<Comment>>(
-                new ApiMethod(ApiV1Constants.FavoritiesComments, HttpMethod.Get, parameters)
+                new ApiMethod(ApiV1Constants.FavoritesComments, HttpMethod.Get, parameters)
                 );
         }
 
@@ -44,7 +44,7 @@ namespace WykopSharpClient.Repository
             var parameters = GetApiParameterSet();
 
             return Client.CallApiMethodWithAuth<List<Entry>>(
-                new ApiMethod(ApiV1Constants.FavoritiesEntries, HttpMethod.Get, parameters)
+                new ApiMethod(ApiV1Constants.FavoritesEntries, HttpMethod.Get, parameters)
                 );
         }
 
@@ -53,7 +53,7 @@ namespace WykopSharpClient.Repository
             var parameters = GetApiParameterSet();
 
             return Client.CallApiMethodWithAuth<List<object>>(
-                new ApiMethod(ApiV1Constants.FavoritiesLists, HttpMethod.Get, parameters)
+                new ApiMethod(ApiV1Constants.FavoritesLists, HttpMethod.Get, parameters)
                 );
         }
     }

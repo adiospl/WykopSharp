@@ -1,5 +1,4 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
@@ -18,6 +17,10 @@ namespace WykopSharpClient.Model
 
     public class RecivedCount : BaseResponse
     {
+
+        [JsonProperty(PropertyName = "count")]
+        public int Count { get; set; }
+
     }
     
     public class DigResponse : BaseResponse

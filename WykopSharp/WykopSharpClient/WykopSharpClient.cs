@@ -31,7 +31,7 @@ namespace WykopSharpClient
         private readonly Lazy<TopRepository> _topRepository;
         
         private string _userKey;
-        internal bool _disposed;
+        private bool _disposed;
 
         public WykopSharpClient(string appKey, string appSecret, string accountKey = null)
             : base(appKey, appSecret, accountKey)
@@ -68,8 +68,6 @@ namespace WykopSharpClient
             get { return _userKey; }
         }
 
-        public string AccountKey => _accountKey;
-
         protected override void Dispose(bool disposing)
         {
             _disposed = true;
@@ -78,14 +76,14 @@ namespace WykopSharpClient
 
         public Login Authenticate()
         {
-            var result = User.Login(_accountKey).Result;
+            var result = User.Login(AccountKey).Result;
             _userKey = result.Userkey;
             return result;
         }
 
         public Login Authenticate(string login, string password)
         {
-            var result = User.Login(_accountKey).Result;
+            var result = User.Login(AccountKey).Result;
             _userKey = result.Userkey;
             return result;
         }

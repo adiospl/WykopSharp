@@ -61,7 +61,7 @@ namespace WykopSharpClient.Repository
             var parameters = GetApiParameterSet();
 
             return Client.CallApiMethodWithAuth<List<Link>>(
-                new ApiMethod(ApiV1Constants.TopIndex, HttpMethod.Get, parameters)
+                new ApiMethod(ApiV1Constants.TopHits, HttpMethod.Get, parameters)
                 );
         } 
 

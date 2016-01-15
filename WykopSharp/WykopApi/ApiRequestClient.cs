@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -16,7 +15,7 @@ namespace WykopSharp
 {
     public class ApiRequestClient : IDisposable
     {
-        protected readonly string _accountKey;
+        public readonly string AccountKey;
 
         private readonly string _appKey;
         private readonly string _appSecret;
@@ -39,7 +38,7 @@ namespace WykopSharp
 
             _appKey = appKey;
             _appSecret = appSecret;
-            _accountKey = accountKey;
+            AccountKey = accountKey;
 
             _client = new HttpClient();
         }
@@ -104,16 +103,7 @@ namespace WykopSharp
             if (method == null)
                 throw new ArgumentNullException(nameof(method));
 
-            var apiRequestUrl = new StringBuilder();
-            apiRequestUrl.Append(WykopConstants.AppDomain);
-            apiRequestUrl.Append(method.Url);
-            apiRequestUrl.Append("/");
-
-            BuildMethodParameters(apiRequestUrl, method);
-            BuildApiParameters(apiRequestUrl, method);
-
-            apiRequestUrl.Append("appkey,");
-            apiRequestUrl.Append(_appKey);
+            var apiRequestUrl = BuildApiRequestUrl(method);
 
             using (var request = new HttpRequestMessage(method.HttpMethod, apiRequestUrl.ToString()))
             {
@@ -166,6 +156,21 @@ namespace WykopSharp
             }
         }
 
+        private StringBuilder BuildApiRequestUrl(ApiMethod method)
+        {
+            var apiRequestUrl = new StringBuilder();
+            apiRequestUrl.Append(WykopConstants.AppDomain);
+            apiRequestUrl.Append(method.Url);
+            apiRequestUrl.Append("/");
+
+            BuildMethodParameters(apiRequestUrl, method);
+            BuildApiParameters(apiRequestUrl, method);
+
+            apiRequestUrl.Append("appkey,");
+            apiRequestUrl.Append(_appKey);
+            return apiRequestUrl;
+        }
+
         protected void AddRequestHeader(HttpRequestMessage request)
         {
             request.Headers.Add("Accept", WykopConstants.Format);
@@ -176,10 +181,10 @@ namespace WykopSharp
 
         private bool CheckIsStringResponseArray(string responseString)
         {
-            return (responseString.StartsWith("[") && !responseString.Contains("{")) ? true : false;
+            return responseString.StartsWith("[") && !responseString.Contains("{");
         }
 
-        private bool CheckIsStringResponseHTML(string responseString)
+        private bool CheckIsStringResponseHtml(string responseString)
         {
             return responseString.StartsWith("<!DOCTYPE HTML>");
         }
@@ -189,7 +194,7 @@ namespace WykopSharp
             using (var reader = new JsonTextReader(new StringReader(response)))
             {
                 var serializer = CreateSerializer(null);
-                if (CheckIsStringResponseHTML(response)) return ResponseType.Html;
+                if (CheckIsStringResponseHtml(response)) return ResponseType.Html;
                 if (CheckIsStringResponseArray(response)) return ResponseType.ValueArray;
 
                 var errorResult = serializer.Deserialize<ErrorResponse>(reader) ?? ErrorResponse.None();

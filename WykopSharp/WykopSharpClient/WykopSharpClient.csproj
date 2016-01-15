@@ -55,11 +55,17 @@
     <Compile Include="Enumerable\PromotedSort.cs" />
     <Compile Include="Exception\ApiClientIsNotSupportedException.cs" />
     <Compile Include="Model\BuryReason.cs" />
+    <Compile Include="Model\Constants\ConversationStatus.cs" />
+    <Compile Include="Model\Constants\EmbedType.cs" />
+    <Compile Include="Model\Constants\NotificationType.cs" />
+    <Compile Include="Model\PopularTag.cs" />
     <Compile Include="Model\Tag.cs" />
     <Compile Include="Model\TopYear.cs" />
+    <Compile Include="Model\UserFavorite.cs" />
     <Compile Include="Model\Voter.cs" />
     <Compile Include="Repository\AbstractRepository.cs" />
     <Compile Include="Repository\AddRepository.cs" />
+    <Compile Include="Repository\Builder\AbstractQuery.cs" />
     <Compile Include="Repository\Builder\IQuery.cs" />
     <Compile Include="Repository\Builder\RelatedQuery.cs" />
     <Compile Include="Repository\Builder\SearchQuery.cs" />

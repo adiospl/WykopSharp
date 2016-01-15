@@ -16,7 +16,7 @@ namespace WykopSharpClient.Repository
         {
         }
 
-        public Task<List<MyWykop>> Index(RankOrder order)
+        public Task<List<Profile>> Index(RankOrder order)
         {
             if (!Enum.IsDefined(typeof (RankOrder), order)) throw new ArgumentOutOfRangeException(nameof(order));
 
@@ -27,7 +27,7 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", order.ToString().ToLower())
             };
 
-            return Client.CallApiMethodWithAuth<List<MyWykop>>(
+            return Client.CallApiMethodWithAuth<List<Profile>>(
                 new ApiMethod(ApiV1Constants.RankIndex, HttpMethod.Get, parameters, methodParameters)
                 );
         }

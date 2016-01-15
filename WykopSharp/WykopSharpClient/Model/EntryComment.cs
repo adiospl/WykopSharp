@@ -37,7 +37,7 @@ namespace WykopSharpClient.Model
         public int VoteCount { get; set; }
 
         [JsonProperty(PropertyName = "embed")]
-        public object Embed { get; set; }
+        public Embed Embed { get; set; }
 
         [JsonProperty(PropertyName = "entry")]
         public Entry Entry { get; set; }

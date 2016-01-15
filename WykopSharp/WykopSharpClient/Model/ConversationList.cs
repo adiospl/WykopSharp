@@ -1,6 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 using WykopSharp.Model;
+using WykopSharpClient.Model.Constants;
 
 namespace WykopSharpClient.Model
 {
@@ -27,7 +28,8 @@ namespace WykopSharpClient.Model
         [JsonProperty(PropertyName = "author_sex")]
         public string AuthorGender { get; set; }
 
+        [JsonConverter(typeof(ConversationStatusConverter))]
         [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
+        public ConversationStatus Status { get; set; }
     }
 }

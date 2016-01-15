@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WykopSharp.Model
+﻿namespace WykopSharp.Model
 {
 
     public class BooleanResponse : BaseResponse
     {
         public BooleanResponse(string response)
         {
-            Success = response.Contains("true") ? true : false;
+            Success = response.Contains("true");
         }
 
         public bool Success { get; set; }

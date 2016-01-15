@@ -1,6 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 using WykopSharp.Model;
+using WykopSharpClient.Model.Constants;
 
 namespace WykopSharpClient.Model
 {
@@ -32,12 +33,13 @@ namespace WykopSharpClient.Model
 
         [JsonProperty(PropertyName = "body")]
         public string Body { get; set; }
-
+        
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
+        [JsonConverter(typeof(NotificationTypeConverter))]
+        public NotificationType Type { get; set; }
 
         [JsonProperty(PropertyName = "entry")]
-        public object Entry { get; set; }
+        public Entry Entry { get; set; }
 
         [JsonProperty(PropertyName = "link")]
         public Link Link { get; set; }
@@ -48,9 +50,5 @@ namespace WykopSharpClient.Model
         [JsonProperty(PropertyName = "url")]
         public Uri Url { get; set; }
     }
-
-    public class NotificationType
-    {
-        //
-    }
+    
 }

@@ -14,11 +14,11 @@ namespace WykopSharpClient.Repository
         {
         }
 
-        public Task<List<Tag>> Popular()
+        public Task<List<PopularTag>> Popular()
         {
             var parameters = GetApiParameterSet();
 
-            return Client.CallApiMethodWithAuth<List<Tag>>(
+            return Client.CallApiMethodWithAuth<List<PopularTag>>(
                 new ApiMethod(ApiV1Constants.TagsIndex, HttpMethod.Get, parameters)
                 );
         }

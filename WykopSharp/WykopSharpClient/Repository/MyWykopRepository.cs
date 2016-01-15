@@ -97,7 +97,7 @@ namespace WykopSharpClient.Repository
 
             var parameters = GetApiParameterSet();
             parameters.Add(new ApiParameter("page", page));
-
+            
             return Client.CallApiMethodWithAuth<List<Notification>>(
                 new ApiMethod(ApiV1Constants.MyWykopNotifications, HttpMethod.Get, parameters)
                 );
@@ -151,12 +151,17 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<BooleanResponse> MarkAsReadNotification()
+        public Task<BooleanResponse> MarkAsReadNotification(int notificationId)
         {
+            if (notificationId <= 0) throw new ArgumentOutOfRangeException(nameof(notificationId));
             var parameters = GetApiParameterSet();
+            var methodParameters = new SortedSet<StringMethodParameter>
+            {
+                new StringMethodParameter("param1", notificationId)
+            };
 
             return Client.CallApiMethodWithAuth<BooleanResponse>(
-                new ApiMethod(ApiV1Constants.MyWykopMarkAsReadNotification, HttpMethod.Get, parameters)
+                new ApiMethod(ApiV1Constants.MyWykopMarkAsReadNotification, HttpMethod.Get, parameters, methodParameters)
                 );
         }
     }

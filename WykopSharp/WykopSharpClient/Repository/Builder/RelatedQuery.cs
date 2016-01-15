@@ -5,7 +5,7 @@ using WykopSharp;
 
 namespace WykopSharpClient.Repository.Builder
 {
-    public class RelatedQuery : IQuery
+    public class RelatedQuery : AbstractQuery
     {
         private string _plus18;
         private string _title;
@@ -13,28 +13,20 @@ namespace WykopSharpClient.Repository.Builder
         private string _url;
         public static int TitleMinLength => 6;
         public static int TitleMaxLength => 80;
-
-        private SortedSet<PostParameter> _query =>
-            _query ?? new SortedSet<PostParameter>();
-
-        public SortedSet<PostParameter> GetQuery()
-        {
-            return _query;
-        }
-
-        public void Build()
+        
+        public override void Build()
         {
             foreach (var p in Fields().Where(parameter => parameter != null))
             {
-                _query.Add(new StringPostParameter(p.Item1, p.Item2));
+                Query.Add(new StringPostParameter(p.Item1, p.Item2));
             }
         }
 
         private IEnumerable<Tuple<string, string>> Fields()
         {
-            yield return Tuple.Create("_url", _url);
-            yield return Tuple.Create("_title", _title);
-            yield return Tuple.Create("_plus18", _plus18);
+            yield return Tuple.Create("url", _url);
+            yield return Tuple.Create("title", _title);
+            yield return Tuple.Create("plus18", _plus18);
         }
 
         public RelatedQuery WithUrl(Uri url)

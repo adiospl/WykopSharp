@@ -16,11 +16,11 @@ namespace WykopSharpClient.Repository
         {
         }
 
-        public Task<ConversationList> List()
+        public Task<List<ConversationList>> List()
         {
             var parameters = GetApiParameterSet();
 
-            return Client.CallApiMethodWithAuth<ConversationList>(
+            return Client.CallApiMethodWithAuth<List<ConversationList>>(
                 new ApiMethod(ApiV1Constants.PmConversationsList, HttpMethod.Get, parameters)
                 );
         }

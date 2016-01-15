@@ -1,16 +1,14 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-using WykopSharp.Model;
+﻿using Newtonsoft.Json;
 
 namespace WykopSharpClient.Model
 {
-    public class MyWykop : BaseResponse
+    public class MyWykop : Entry
     {
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
+        //[JsonProperty(PropertyName = "type")]
+        //public string Type { get; set; }
 
-        [JsonProperty(PropertyName = "comments")]
-        public List<Comment> Comments { get; set; }
+        //[JsonProperty(PropertyName = "comments")]
+        //public List<Comment> Comments { get; set; }
 
         [JsonProperty(PropertyName = "commented")]
         public bool Commented { get; set; }

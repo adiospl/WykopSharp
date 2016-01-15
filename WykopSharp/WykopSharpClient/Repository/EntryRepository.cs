@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using WykopSharp;
-using WykopSharp.Model;
 using WykopSharpClient.Enumerable;
 using WykopSharpClient.Model;
 
@@ -220,7 +219,7 @@ namespace WykopSharpClient.Repository
             var parameters = GetApiParameterSet();
             var methodParameters = new SortedSet<StringMethodParameter>
             {
-                new StringMethodParameter("param1", entryType.ToString()),
+                new StringMethodParameter("param1", entryType.ToString().ToLower()),
                 new StringMethodParameter("param2", entryId)
             };
             if (entryType == EntryType.Comment && commentId != 0)
@@ -242,7 +241,7 @@ namespace WykopSharpClient.Repository
             var parameters = GetApiParameterSet();
             var methodParameters = new SortedSet<StringMethodParameter>
             {
-                new StringMethodParameter("param1", entryType.ToString()),
+                new StringMethodParameter("param1", entryType.ToString().ToLower()),
                 new StringMethodParameter("param2", entryId)
             };
             if (entryType == EntryType.Comment && commentId != 0)
@@ -255,7 +254,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<BooleanResponse> Favorite(int entryId)
+        public Task<UserFavorite> Favorite(int entryId)
         {
             if (entryId <= 0) throw new ArgumentOutOfRangeException(nameof(entryId));
 
@@ -265,7 +264,7 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", entryId)
             };
 
-            return Client.CallApiMethodWithAuth<BooleanResponse>(
+            return Client.CallApiMethodWithAuth<UserFavorite>(
                 new ApiMethod(ApiV1Constants.EntriesFavorite, HttpMethod.Get, parameters, methodParameters)
                 );
         }

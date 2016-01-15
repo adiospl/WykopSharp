@@ -5,13 +5,13 @@ namespace WykopSharpClient.Model.Constants
 {
     public enum UserType
     {
-        Green,
-        Orange,
-        Maroon,
-        Administrator,
-        Banned,
-        Deleted,
-        Customer
+        Green = 0,
+        Orange = 1,
+        Maroon = 2,
+        Administrator = 5,
+        Banned = 1001,
+        Deleted = 1002,
+        Customer = 2001
     }
 
     public static class UserGroup
@@ -27,4 +27,5 @@ namespace WykopSharpClient.Model.Constants
             {2001, new Tuple<UserType, string>(UserType.Customer, "#3F6FA0")}
         };
     }
+    
 }

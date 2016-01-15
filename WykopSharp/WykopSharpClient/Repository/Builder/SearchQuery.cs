@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using WykopSharp;
 using WykopSharpClient.Enumerable.Search;
 
 namespace WykopSharpClient.Repository.Builder
 {
-    public class SearchQuery : IQuery
+    public class SearchQuery : AbstractQuery
     {
         private string _from;
         private string _sort;
@@ -16,21 +15,14 @@ namespace WykopSharpClient.Repository.Builder
 
         private string _what;
         private string _when;
-
-        private readonly SortedSet<PostParameter> _query = new SortedSet<PostParameter>();
-
-        public void Build()
+        
+        public override void Build()
         {
             foreach (var p in Fields().Where(parameter => parameter != null))
             {
                 if(!string.IsNullOrEmpty(p.Item2))
-                    _query.Add(new StringPostParameter(p.Item1, p.Item2));
+                    Query.Add(new StringPostParameter(p.Item1, p.Item2));
             }
-        }
-
-        public SortedSet<PostParameter> GetQuery()
-        {
-            return _query;
         }
 
         private IEnumerable<Tuple<string, string>> Fields()
