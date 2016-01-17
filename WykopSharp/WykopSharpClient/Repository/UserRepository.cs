@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using WykopSharp;
+using WykopSharp.Model;
 using WykopSharpClient.Model;
 
 namespace WykopSharpClient.Repository
@@ -75,11 +76,11 @@ namespace WykopSharpClient.Repository
         }
 
         [WykopApiDoc("http://www.wykop.pl/dla-programistow/dokumentacja/#info6_7_5")]
-        public Task<dynamic> Connect()
+        public Task<HtmlResponse> Connect()
         {
             var parameters = new HashSet<ApiParameter>();
             
-            return Client.CallApiMethod<object>(
+            return Client.CallApiMethod<HtmlResponse>(
                 new ApiMethod(ApiV1Constants.UserConnect, HttpMethod.Post, parameters)
                 );
         }

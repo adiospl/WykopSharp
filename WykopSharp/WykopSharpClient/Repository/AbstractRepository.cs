@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WykopSharp;
+using WykopSharp.Model;
 using WykopSharpClient.Model;
 
 namespace WykopSharpClient.Repository
@@ -35,6 +36,6 @@ namespace WykopSharpClient.Repository
     {
         Task<Login> Login(string accountKey);
         Task<Login> Login(string login, string password);
-        Task<object> Connect();
+        Task<HtmlResponse> Connect();
     }
 }

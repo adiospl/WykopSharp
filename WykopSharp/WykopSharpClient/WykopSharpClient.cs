@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Authentication;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using WykopSharp;
@@ -98,7 +97,7 @@ namespace WykopSharpClient
                 {
                     return await CallApiMethod<TResult>(method, converters);
                 }
-                catch (AuthenticationException)
+                catch (AuthorizationException)
                 {
                     retries++;
                     Authenticate();

@@ -24,7 +24,7 @@ namespace WykopSharp
                 if (Data.Length > MaxFileSize)
                     throw new Exception("file is above {MaxFileSize} bytes. ");
 
-                FileName = Path.GetFileName(filePath);
+                FileName = System.IO.Path.GetFileName(filePath);
                 MimeType = BinaryType.GetFileMimeType(filePath);
             }
             else

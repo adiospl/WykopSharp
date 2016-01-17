@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Windows.Data.Json;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using WykopSharp.Auth;
 using WykopSharp.Enumerable;
 using WykopSharp.Exceptions;
 using WykopSharp.Model;
 
+
 namespace WykopSharp
 {
+
     public class ApiRequestClient : IDisposable
     {
         public readonly string AccountKey;
@@ -131,9 +136,10 @@ namespace WykopSharp
                 {
                     if (!response.IsSuccessStatusCode)
                         throw new InvalidResponseException("Response is not success. ", 0);
-
+                    
                     var stringResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    var responseType = ValidateErrors(stringResponse);
+                    var responseType = CheckResponseType(stringResponse, response);
+                    ValidateErrors(stringResponse);
                     
                     switch (responseType)
                     {
@@ -154,6 +160,32 @@ namespace WykopSharp
                     }
                 }
             }
+        }
+
+        private bool CheckIsValidJSon(string json)
+        {
+            try
+            {
+                JToken token = JObject.Parse(json);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        private ResponseType CheckResponseType(string json, HttpResponseMessage response)
+        {
+            switch (response.Content.Headers.ContentType.MediaType)
+            {
+                case "text/html":
+                    return ResponseType.Html;
+                case "application/json":
+                    return CheckIsValidJSon(json) ?
+                        ResponseType.Json : ResponseType.ValueArray;
+            }
+            return ResponseType.Unsupported;
         }
 
         private StringBuilder BuildApiRequestUrl(ApiMethod method)
@@ -178,30 +210,15 @@ namespace WykopSharp
             request.Headers.Add("Cache-Control", WykopConstants.CacheControl);
             request.Headers.Add("User-Agent", WykopConstants.UserAgent);
         }
-
-        private bool CheckIsStringResponseArray(string responseString)
-        {
-            return responseString.StartsWith("[") && !responseString.Contains("{");
-        }
-
-        private bool CheckIsStringResponseHtml(string responseString)
-        {
-            return responseString.StartsWith("<!DOCTYPE HTML>");
-        }
-
-        protected ResponseType ValidateErrors(string response)
+        
+        protected void ValidateErrors(string response)
         {
             using (var reader = new JsonTextReader(new StringReader(response)))
             {
                 var serializer = CreateSerializer(null);
-                if (CheckIsStringResponseHtml(response)) return ResponseType.Html;
-                if (CheckIsStringResponseArray(response)) return ResponseType.ValueArray;
+                var errorResult = serializer.Deserialize<ErrorResponse>(reader);
 
-                var errorResult = serializer.Deserialize<ErrorResponse>(reader) ?? ErrorResponse.None();
-                if(errorResult.Error == null || errorResult.Error.Code == 0)
-                    return ResponseType.Json;
-
-                switch (errorResult.Error.Code)
+                switch (errorResult?.Error?.Code)
                 {
                     case 1:
                     case 5:
@@ -241,8 +258,6 @@ namespace WykopSharp
                         //default:
                         //throw new UnknownApiException("Unknown Api Exception", errorResult.Error);
                 }
-
-                return ResponseType.Json;
             }
         }
 

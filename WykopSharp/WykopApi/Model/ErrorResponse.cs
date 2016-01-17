@@ -15,18 +15,9 @@ namespace WykopSharp.Model
 
     public class ErrorResponse
     {
+
         [JsonProperty(PropertyName = "error")]
         public Error Error { get; set; }
 
-        public static ErrorResponse None()
-        {
-            return new ErrorResponse()
-            {
-                Error = new Error() {
-                    Code = 0,
-                    Message = "No errors"
-                }
-            };
-        }
     }
 }

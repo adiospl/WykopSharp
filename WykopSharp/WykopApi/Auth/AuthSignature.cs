@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
+
+using Windows.Security.Cryptography;
+using Windows.Security.Cryptography.Core;
+using Windows.Storage.Streams;
+using Windows.UI.Core;
 
 namespace WykopSharp.Auth
 {
@@ -36,21 +40,33 @@ namespace WykopSharp.Auth
 
         public string FetchSignature()
         {
-            using (var md5Hash = MD5.Create())
-            {
-                var sb = new StringBuilder();
-                sb.Append(_appSecret);
-                sb.Append(_url);
-                if (_postValuesString != null) sb.Append(_postValuesString);
+            //var md5 = Windows.Security.Cryptography.Core.HashAlgorithmNames.Md5;
+            //md5.
+            //using (var md5Hash = MD5.Create())
+            //{
+            var sb = new StringBuilder();
+            sb.Append(_appSecret);
+            sb.Append(_url);
+            if(_postValuesString != null)
+                sb.Append(_postValuesString);
 
-                return GetMd5Hash(md5Hash, sb.ToString());
-            }
+            return ComputeMD5(sb.ToString());
+            //}
         }
 
-        private static string GetMd5Hash(MD5 md5Hash, string input)
+        //private static string GetMd5Hash(MD5 md5Hash, string input)
+        //{
+        //    var data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+        //    return BitConverter.ToString(data).Replace("-", "");
+        //}
+
+        private static string ComputeMD5(string str)
         {
-            var data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-            return BitConverter.ToString(data).Replace("-", "");
+            var alg = HashAlgorithmProvider.OpenAlgorithm(HashAlgorithmNames.Md5);
+            IBuffer buff = CryptographicBuffer.ConvertStringToBinary(str, BinaryStringEncoding.Utf8);
+            var hashed = alg.HashData(buff);
+            var res = CryptographicBuffer.EncodeToHexString(hashed);
+            return res;
         }
     }
 }

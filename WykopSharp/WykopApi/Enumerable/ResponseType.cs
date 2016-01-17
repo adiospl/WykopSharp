@@ -4,6 +4,7 @@
     {
         Json,
         Html,
-        ValueArray
+        ValueArray,
+        Unsupported
     }
 }
