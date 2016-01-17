@@ -10,7 +10,7 @@ using Windows.UI.Core;
 
 namespace WykopSharp.Auth
 {
-    internal class AuthSignature
+    public class AuthSignature
     {
         private readonly string _appSecret;
         private readonly string _postValuesString;
@@ -40,10 +40,6 @@ namespace WykopSharp.Auth
 
         public string FetchSignature()
         {
-            //var md5 = Windows.Security.Cryptography.Core.HashAlgorithmNames.Md5;
-            //md5.
-            //using (var md5Hash = MD5.Create())
-            //{
             var sb = new StringBuilder();
             sb.Append(_appSecret);
             sb.Append(_url);
@@ -51,16 +47,9 @@ namespace WykopSharp.Auth
                 sb.Append(_postValuesString);
 
             return ComputeMD5(sb.ToString());
-            //}
         }
 
-        //private static string GetMd5Hash(MD5 md5Hash, string input)
-        //{
-        //    var data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-        //    return BitConverter.ToString(data).Replace("-", "");
-        //}
-
-        private static string ComputeMD5(string str)
+        public static string ComputeMD5(string str)
         {
             var alg = HashAlgorithmProvider.OpenAlgorithm(HashAlgorithmNames.Md5);
             IBuffer buff = CryptographicBuffer.ConvertStringToBinary(str, BinaryStringEncoding.Utf8);

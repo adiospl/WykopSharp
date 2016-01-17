@@ -12,7 +12,9 @@ namespace WykopSharp
             Period,
             Group,
             Output,
-            Format
+            Format,
+            Redirect,
+            Secure
         }
 
         public const string UserAgent = "WykopSharp";
@@ -31,7 +33,9 @@ namespace WykopSharp
             {AllowedApiKeys.Period, "period"},
             {AllowedApiKeys.Group, "group"},
             {AllowedApiKeys.Output, "output"},
-            {AllowedApiKeys.Format, "format"}
+            {AllowedApiKeys.Format, "format"},
+            {AllowedApiKeys.Redirect, "redirect"},
+            {AllowedApiKeys.Secure, "secure"}
         };
     }
 }

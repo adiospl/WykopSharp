@@ -100,6 +100,14 @@ namespace WykopSharp
             return content;
         }
 
+        public Uri GetApiMethodUrl(ApiMethod method)
+        {
+            if (method == null) throw new ArgumentNullException(nameof(method));
+
+            var apiRequestUrl = BuildApiRequestUrl(method);
+            return new Uri(apiRequestUrl.ToString());
+        }
+
         public async Task<TResult> CallApiMethod<TResult>(ApiMethod method, IEnumerable<JsonConverter> converters = null)
             where TResult : class
         {
@@ -131,7 +139,7 @@ namespace WykopSharp
 
                 var hash = signature.FetchSignature();
                 request.Headers.Add("apisign", hash);
-
+                
                 using (var response = await _client.SendAsync(request, CancellationToken.None).ConfigureAwait(false))
                 {
                     if (!response.IsSuccessStatusCode)

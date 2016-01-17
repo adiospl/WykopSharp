@@ -36,6 +36,7 @@ namespace WykopSharpClient.Repository
     {
         Task<Login> Login(string accountKey);
         Task<Login> Login(string login, string password);
-        Task<HtmlResponse> Connect();
+        Uri Connect();
+        Uri Connect(Uri redirectUrl, string appSecret);
     }
 }

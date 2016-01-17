@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using WykopSharp;
+using WykopSharp.Auth;
 using WykopSharp.Model;
 using WykopSharpClient.Model;
 
@@ -76,13 +77,28 @@ namespace WykopSharpClient.Repository
         }
 
         [WykopApiDoc("http://www.wykop.pl/dla-programistow/dokumentacja/#info6_7_5")]
-        public Task<HtmlResponse> Connect()
+        public Uri Connect()
         {
             var parameters = new HashSet<ApiParameter>();
-            
-            return Client.CallApiMethod<HtmlResponse>(
-                new ApiMethod(ApiV1Constants.UserConnect, HttpMethod.Post, parameters)
-                );
+
+            return Client.GetApiMethodUrl(new ApiMethod(ApiV1Constants.UserConnect, HttpMethod.Post, parameters));
+        }
+
+        public Uri Connect(Uri redirectUrl, string appSecret)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(redirectUrl.AbsoluteUri);
+            var base64 = Convert.ToBase64String(plainTextBytes);
+
+            var redirect = Uri.EscapeDataString(base64);
+            var secure = AuthSignature.ComputeMD5(appSecret + redirectUrl.AbsoluteUri);
+
+            var parameters = new HashSet<ApiParameter>
+            {
+                new ApiParameter("redirect", redirect),
+                new ApiParameter("secure", secure)
+            };
+
+            return Client.GetApiMethodUrl(new ApiMethod(ApiV1Constants.UserConnect, HttpMethod.Post, parameters));
         }
     }
 }
