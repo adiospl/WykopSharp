@@ -6,6 +6,7 @@ using WykopSharp;
 using WykopSharp.Auth;
 using WykopSharp.Model;
 using WykopSharpClient.Model;
+using WykopSharpClient.Repository.Interface;
 
 namespace WykopSharpClient.Repository
 {

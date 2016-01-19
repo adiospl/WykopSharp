@@ -4,30 +4,32 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using WykopSharp;
 using WykopSharp.Exceptions;
+using WykopSharp.Interface;
 using WykopSharpClient.Model;
 using WykopSharpClient.Repository;
+using WykopSharpClient.Repository.Interface;
 
 namespace WykopSharpClient
 {
-    public class WykopSharpClient : ApiRequestClient
+    public class WykopSharpClient : ApiRequestClient, IWykopSharpClient
     {
-        private readonly Lazy<CommentRepository> _comments;
-        private readonly Lazy<ConversationRepository> _conversationRepository;
-        private readonly Lazy<EntryRepository> _entries;
-        private readonly Lazy<FavoritiesRepository> _favoritiesRepository;
-        private readonly Lazy<LinkRepository> _link;
-        private readonly Lazy<LinksRepository> _links;
-        private readonly Lazy<MyWykopRepository> _myWykop;
-        private readonly Lazy<ObservatoryRepository> _observatoryRepository;
-        private readonly Lazy<PopularRepository> _popular;
-        private readonly Lazy<ProfileRepository> _profile;
-        private readonly Lazy<RankRepository> _rankRepository;
-        private readonly Lazy<RelatedRepository> _related;
-        private readonly Lazy<SearchRepository> _search;
-        private readonly Lazy<StreamRepository> _streamRepository;
-        private readonly Lazy<TagRepository> _tagRepository;
-        private readonly Lazy<TagsRepository> _tagsRepository;
-        private readonly Lazy<TopRepository> _topRepository;
+        private readonly Lazy<ICommentRepository> _comments;
+        private readonly Lazy<IConversationRepository> _conversationRepository;
+        private readonly Lazy<IEntryRepository> _entries;
+        private readonly Lazy<IFavoritiesRepository> _favoritiesRepository;
+        private readonly Lazy<ILinkRepository> _link;
+        private readonly Lazy<ILinksRepository> _links;
+        private readonly Lazy<IMyWykopRepository> _myWykop;
+        private readonly Lazy<IObservatoryRepository> _observatoryRepository;
+        private readonly Lazy<IPopularRepository> _popular;
+        private readonly Lazy<IProfileRepository> _profile;
+        private readonly Lazy<IRankRepository> _rankRepository;
+        private readonly Lazy<IRelatedRepository> _related;
+        private readonly Lazy<ISearchRepository> _search;
+        private readonly Lazy<IStreamRepository> _streamRepository;
+        private readonly Lazy<ITagRepository> _tagRepository;
+        private readonly Lazy<ITagsRepository> _tagsRepository;
+        private readonly Lazy<ITopRepository> _topRepository;
         
         private string _userKey;
         private bool _disposed;
@@ -36,23 +38,23 @@ namespace WykopSharpClient
             : base(appKey, appSecret, accountKey)
         {
             User =                     new UserRepository(this);
-            _entries =                  new Lazy<EntryRepository>(() => new EntryRepository(this));
-            _comments =                 new Lazy<CommentRepository>(() => new CommentRepository(this));
-            _profile =                  new Lazy<ProfileRepository>(() => new ProfileRepository(this));
-            _link =                     new Lazy<LinkRepository>(() => new LinkRepository(this));
-            _links =                    new Lazy<LinksRepository>(() => new LinksRepository(this));
-            _popular =                  new Lazy<PopularRepository>(() => new PopularRepository(this));
-            _search =                   new Lazy<SearchRepository>(() => new SearchRepository(this));
-            _related =                  new Lazy<RelatedRepository>(() => new RelatedRepository(this));
-            _myWykop =                  new Lazy<MyWykopRepository>(() => new MyWykopRepository(this));
-            _rankRepository =           new Lazy<RankRepository>(() => new RankRepository(this));
-            _observatoryRepository =    new Lazy<ObservatoryRepository>(() => new ObservatoryRepository(this));
-            _favoritiesRepository =     new Lazy<FavoritiesRepository>(() => new FavoritiesRepository(this));
-            _streamRepository =         new Lazy<StreamRepository>(() => new StreamRepository(this));
-            _tagRepository =            new Lazy<TagRepository>(() => new TagRepository(this));
-            _conversationRepository =   new Lazy<ConversationRepository>(() => new ConversationRepository(this));
-            _tagsRepository =           new Lazy<TagsRepository>(() => new TagsRepository(this));
-            _topRepository =            new Lazy<TopRepository>(() => new TopRepository(this));
+            _entries =                  new Lazy<IEntryRepository>(() => new EntryRepository(this));
+            _comments =                 new Lazy<ICommentRepository>(() => new CommentRepository(this));
+            _profile =                  new Lazy<IProfileRepository>(() => new ProfileRepository(this));
+            _link =                     new Lazy<ILinkRepository>(() => new LinkRepository(this));
+            _links =                    new Lazy<ILinksRepository>(() => new LinksRepository(this));
+            _popular =                  new Lazy<IPopularRepository>(() => new PopularRepository(this));
+            _search =                   new Lazy<ISearchRepository>(() => new SearchRepository(this));
+            _related =                  new Lazy<IRelatedRepository>(() => new RelatedRepository(this));
+            _myWykop =                  new Lazy<IMyWykopRepository>(() => new MyWykopRepository(this));
+            _rankRepository =           new Lazy<IRankRepository>(() => new RankRepository(this));
+            _observatoryRepository =    new Lazy<IObservatoryRepository>(() => new ObservatoryRepository(this));
+            _favoritiesRepository =     new Lazy<IFavoritiesRepository>(() => new FavoritiesRepository(this));
+            _streamRepository =         new Lazy<IStreamRepository>(() => new StreamRepository(this));
+            _tagRepository =            new Lazy<ITagRepository>(() => new TagRepository(this));
+            _conversationRepository =   new Lazy<IConversationRepository>(() => new ConversationRepository(this));
+            _tagsRepository =           new Lazy<ITagsRepository>(() => new TagsRepository(this));
+            _topRepository =            new Lazy<ITopRepository>(() => new TopRepository(this));
         }
 
         public bool Disposed
@@ -114,24 +116,24 @@ namespace WykopSharpClient
 
         #region Repositories
 
-        public UserRepository User { get; }
-        public EntryRepository Entries              => _entries.Value;
-        public CommentRepository Comments           => _comments.Value;
-        public ProfileRepository Profiles           => _profile.Value;
-        public LinkRepository Link                  => _link.Value;
-        public LinksRepository Links                => _links.Value;
-        public PopularRepository Popular            => _popular.Value;
-        public SearchRepository Search              => _search.Value;
-        public RelatedRepository Related            => _related.Value;
-        public MyWykopRepository MyWykop            => _myWykop.Value;
-        public RankRepository Rank                  => _rankRepository.Value;
-        public ObservatoryRepository Observatory    => _observatoryRepository.Value;
-        public FavoritiesRepository Favorities      => _favoritiesRepository.Value;
-        public StreamRepository Stream              => _streamRepository.Value;
-        public TagRepository Tag                    => _tagRepository.Value;
-        public ConversationRepository Conversation  => _conversationRepository.Value;
-        public TagsRepository Tags                  => _tagsRepository.Value;
-        public TopRepository Top                    => _topRepository.Value;
+        public IUserRepository User { get; }
+        public IEntryRepository Entries              => _entries.Value;
+        public ICommentRepository Comments           => _comments.Value;
+        public IProfileRepository Profiles           => _profile.Value;
+        public ILinkRepository Link                  => _link.Value;
+        public ILinksRepository Links                => _links.Value;
+        public IPopularRepository Popular            => _popular.Value;
+        public ISearchRepository Search              => _search.Value;
+        public IRelatedRepository Related            => _related.Value;
+        public IMyWykopRepository MyWykop            => _myWykop.Value;
+        public IRankRepository Rank                  => _rankRepository.Value;
+        public IObservatoryRepository Observatory    => _observatoryRepository.Value;
+        public IFavoritiesRepository Favorities      => _favoritiesRepository.Value;
+        public IStreamRepository Stream              => _streamRepository.Value;
+        public ITagRepository Tag                    => _tagRepository.Value;
+        public IConversationRepository Conversation  => _conversationRepository.Value;
+        public ITagsRepository Tags                  => _tagsRepository.Value;
+        public ITopRepository Top                    => _topRepository.Value;
 
         #endregion
     }

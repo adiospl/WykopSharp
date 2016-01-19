@@ -4,11 +4,12 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using WykopSharp;
 using WykopSharpClient.Model;
+using WykopSharpClient.Repository.Interface;
 
 namespace WykopSharpClient.Repository
 {
     [Repository]
-    public class TopRepository : AbstractRepository
+    public class TopRepository : AbstractRepository, ITopRepository
     {
         public TopRepository(WykopSharpClient client) : base(client)
         {

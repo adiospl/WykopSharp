@@ -4,12 +4,13 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using WykopSharp;
 using WykopSharpClient.Model;
+using WykopSharpClient.Repository.Interface;
 
 namespace WykopSharpClient.Repository
 {
     [Repository]
     [WykopApiDoc("http://www.wykop.pl/dla-programistow/dokumentacja/#info6_15")]
-    public class FavoritiesRepository : AbstractRepository
+    public class FavoritiesRepository : AbstractRepository, IFavoritiesRepository
     {
         public FavoritiesRepository(WykopSharpClient client) : base(client)
         {

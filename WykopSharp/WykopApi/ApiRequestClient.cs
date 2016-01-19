@@ -12,13 +12,14 @@ using Newtonsoft.Json.Linq;
 using WykopSharp.Auth;
 using WykopSharp.Enumerable;
 using WykopSharp.Exceptions;
+using WykopSharp.Interface;
 using WykopSharp.Model;
 
 
 namespace WykopSharp
 {
 
-    public class ApiRequestClient : IDisposable
+    public class ApiRequestClient : IApiRequestClient
     {
         public readonly string AccountKey;
 
@@ -263,8 +264,8 @@ namespace WykopSharp
                     case 61:
                     case 81:
                         throw new InvalidResourceException(errorResult.Error.Message, errorResult.Error.Code);
-                        //default:
-                        //throw new UnknownApiException("Unknown Api Exception", errorResult.Error);
+                    default:
+                        throw new UnknownApiException("Unknown Api Exception", errorResult?.Error?.Code ?? -1);
                 }
             }
         }

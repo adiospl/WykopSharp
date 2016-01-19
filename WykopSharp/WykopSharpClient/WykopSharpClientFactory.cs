@@ -1,21 +1,22 @@
-﻿using WykopSharp;
+﻿using System;
+using WykopSharp;
+using WykopSharp.Interface;
 using WykopSharpClient.Exception;
+using WykopSharpClient.Fake;
 
 namespace WykopSharpClient
 {
-    public class WykopSharpClientFactory : IWykopClientFactory
+    public static class WykopSharpClientFactory
     {
-        public TClient Create<TClient>(string appKey, string appSecret, string userKey) where TClient : ApiRequestClient
+        public static IWykopSharpClient Create<TApiRequestClient>(string appKey, string appSecret, string userKey)
         {
-            if (typeof (TClient) == typeof (ApiRequestClient))
+            if (typeof(TApiRequestClient) == typeof(WykopSharpClient))
             {
-                // log
-                return new ApiRequestClient(appKey, appSecret, userKey) as TClient;
+                return new WykopSharpClient(appKey, appSecret, userKey);
             }
-            if (typeof (TClient) == typeof (WykopSharpClient))
+            if (typeof (TApiRequestClient) == typeof (WykopSharpFakeClient))
             {
-                // log
-                return new WykopSharpClient(appKey, appSecret, userKey) as TClient;
+                return new WykopSharpClient(String.Empty, String.Empty, String.Empty);
             }
 
             throw new ApiClientIsNotSupportedException("Client with type {typeof (TClient).FullName} is not supported");

@@ -3,12 +3,13 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using WykopSharp;
 using WykopSharpClient.Model;
+using WykopSharpClient.Repository.Interface;
 
 namespace WykopSharpClient.Repository
 {
     [Repository]
     [WykopApiDoc("http://www.wykop.pl/dla-programistow/dokumentacja/#info6_14")]
-    public class ObservatoryRepository : AbstractRepository
+    public class ObservatoryRepository : AbstractRepository, IObservatoryRepository
     {
         public ObservatoryRepository(WykopSharpClient client) : base(client)
         {

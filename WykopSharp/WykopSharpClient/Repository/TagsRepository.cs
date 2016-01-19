@@ -3,12 +3,13 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using WykopSharp;
 using WykopSharpClient.Model;
+using WykopSharpClient.Repository.Interface;
 
 namespace WykopSharpClient.Repository
 {
     [Repository]
     [WykopApiDoc("http://www.wykop.pl/dla-programistow/dokumentacja/#info6_19")]
-    public class TagsRepository : AbstractRepository
+    public class TagsRepository : AbstractRepository, ITagsRepository
     {
         public TagsRepository(WykopSharpClient client) : base(client)
         {

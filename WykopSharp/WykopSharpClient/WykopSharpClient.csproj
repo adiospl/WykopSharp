@@ -117,6 +117,7 @@
     <Compile Include="Enumerable\Rank.cs" />
     <Compile Include="Enumerable\PromotedSort.cs" />
     <Compile Include="Exception\ApiClientIsNotSupportedException.cs" />
+    <Compile Include="IWykopSharpClient.cs" />
     <Compile Include="Model\BuryReason.cs" />
     <Compile Include="Model\Constants\ConversationStatus.cs" />
     <Compile Include="Model\Constants\EmbedType.cs" />
@@ -133,7 +134,44 @@
     <Compile Include="Repository\Builder\RelatedQuery.cs" />
     <Compile Include="Repository\Builder\SearchQuery.cs" />
     <Compile Include="Repository\ConversationRepository.cs" />
+    <Compile Include="Repository\Fake\FakeCommentRepository.cs" />
+    <Compile Include="Repository\Fake\FakeConversationRepository.cs" />
+    <Compile Include="Repository\Fake\FakeEntryRepository.cs" />
+    <Compile Include="Repository\Fake\FakeFavoritiesRepository.cs" />
+    <Compile Include="Repository\Fake\FakeLinkRepository.cs" />
+    <Compile Include="Repository\Fake\FakeLinksRepository.cs" />
+    <Compile Include="Repository\Fake\FakeMyWykopRepository.cs" />
+    <Compile Include="Repository\Fake\FakeObservatoryRepository.cs" />
+    <Compile Include="Repository\Fake\FakePopularRepository.cs" />
+    <Compile Include="Repository\Fake\FakeProfileRepository.cs" />
+    <Compile Include="Repository\Fake\FakeRankRepository.cs" />
+    <Compile Include="Repository\Fake\FakeRelatedRepository.cs" />
+    <Compile Include="Repository\Fake\FakeSearchRepository.cs" />
+    <Compile Include="Repository\Fake\FakeStreamRepository.cs" />
+    <Compile Include="Repository\Fake\FakeTagRepository.cs" />
+    <Compile Include="Repository\Fake\FakeTagsRepository.cs" />
+    <Compile Include="Repository\Fake\FakeTopRepository.cs" />
+    <Compile Include="Repository\Fake\FakeUserRepository.cs" />
     <Compile Include="Repository\FavoritiesRepository.cs" />
+    <Compile Include="Repository\Interface\IConversationRepository.cs" />
+    <Compile Include="Repository\Interface\IEntryRepository.cs" />
+    <Compile Include="Repository\Interface\IFavoritiesRepository.cs" />
+    <Compile Include="Repository\Interface\ILinkRepository.cs" />
+    <Compile Include="Repository\Interface\ILinksRepository.cs" />
+    <Compile Include="Repository\Interface\IMyWykopRepository.cs" />
+    <Compile Include="Repository\Interface\ICommentRepository.cs" />
+    <Compile Include="Repository\Interface\IObservatoryRepository.cs" />
+    <Compile Include="Repository\Interface\IPopularRepository.cs" />
+    <Compile Include="Repository\Interface\IProfileRepository.cs" />
+    <Compile Include="Repository\Interface\IRankRepository.cs" />
+    <Compile Include="Repository\Interface\IRelatedRepository.cs" />
+    <Compile Include="Repository\Interface\ISearchRepository.cs" />
+    <Compile Include="Repository\Interface\IStreamRepository.cs" />
+    <Compile Include="Repository\Interface\ITagRepository.cs" />
+    <Compile Include="Repository\Interface\ITagsRepository.cs" />
+    <Compile Include="Repository\Interface\ITopRepository.cs" />
+    <Compile Include="Repository\Interface\IRepository.cs" />
+    <Compile Include="Repository\Interface\IUserRepository.cs" />
     <Compile Include="Repository\LinkRepository.cs" />
     <Compile Include="Repository\LinksRepository.cs" />
     <Compile Include="Repository\MyWykopRepository.cs" />
@@ -171,6 +209,7 @@
     <Compile Include="WykopSharpClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WykopSharpClientFactory.cs" />
+    <Compile Include="Fake\WykopSharpFakeClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -181,6 +220,7 @@
       <Name>WykopSharp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using WykopSharp;
 using WykopSharp.Model;
-using WykopSharpClient.Model;
+using WykopSharpClient.Repository.Interface;
 
 namespace WykopSharpClient.Repository
 {
@@ -25,18 +24,5 @@ namespace WykopSharpClient.Repository
 
             return parameters;
         }
-    }
-
-    public interface IRepository
-    {
-        HashSet<ApiParameter> GetApiParameterSet();
-    }
-    
-    public interface IUserRepository : IRepository
-    {
-        Task<Login> Login(string accountKey);
-        Task<Login> Login(string login, string password);
-        Uri Connect();
-        Uri Connect(Uri redirectUrl, string appSecret);
     }
 }

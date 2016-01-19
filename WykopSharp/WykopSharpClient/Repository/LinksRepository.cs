@@ -6,12 +6,13 @@ using WykopSharp;
 using WykopSharpClient.Enumerable.Links;
 using WykopSharpClient.Enumerable.Search;
 using WykopSharpClient.Model;
+using WykopSharpClient.Repository.Interface;
 
 namespace WykopSharpClient.Repository
 {
     [Repository]
     [WykopApiDoc("http://www.wykop.pl/dla-programistow/dokumentacja/#info6_3")]
-    public class LinksRepository : AbstractRepository
+    public class LinksRepository : AbstractRepository, ILinksRepository
     {
         public LinksRepository(WykopSharpClient client) : base(client)
         {
@@ -20,7 +21,7 @@ namespace WykopSharpClient.Repository
         public Task<List<Link>> Promoted(int page, PromotedSort sort)
         {
             if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
-            if (!Enum.IsDefined(typeof (Sort), sort)) throw new ArgumentOutOfRangeException(nameof(sort));
+            if (!Enum.IsDefined(typeof (PromotedSort), sort)) throw new ArgumentOutOfRangeException(nameof(sort));
 
             var parameters = new HashSet<ApiParameter>
             {
@@ -37,7 +38,7 @@ namespace WykopSharpClient.Repository
         public Task<List<Link>> Upcomming(int page, UpcommingSort sort)
         {
             if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
-            if (!Enum.IsDefined(typeof (Sort), sort)) throw new ArgumentOutOfRangeException(nameof(sort));
+            if (!Enum.IsDefined(typeof (UpcommingSort), sort)) throw new ArgumentOutOfRangeException(nameof(UpcommingSort));
 
             var parameters = new HashSet<ApiParameter>
             {

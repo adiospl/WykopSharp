@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using WykopSharp;
 using WykopSharpClient.Model;
 using WykopSharpClient.Repository.Builder;
+using WykopSharpClient.Repository.Interface;
 
 namespace WykopSharpClient.Repository
 {
     [Repository]
     [WykopApiDoc("http://www.wykop.pl/dla-programistow/dokumentacja/#info6_6")]
-    public class SearchRepository : AbstractRepository
+    public class SearchRepository : AbstractRepository, ISearchRepository
     {
         public SearchRepository(WykopSharpClient client) : base(client)
         {
