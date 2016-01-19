@@ -4,14 +4,13 @@ Klient API serwisu Wykop.pl dla C# .NET.
 # Przykład użycia:
 ## Wysłanie PM
 
-        private static async Task<BooleanResponse> SendMessage(string appKey, string appSecret, string userKey)
+        private async Task<BooleanResponse> SendMessage(string appKey, string appSecret, string userKey)
         {
-            var factory = new WykopSharpClientFactory();
             var file = new ByteFile("resource\\test.PNG");
 
-            var test = @  "( ͡°( ͡° ͜ʖ( ͡° ͜ʖ ͡°)ʖ ͡°) ͡°)";
+            var test = @"( ͡°( ͡° ͜ʖ( ͡° ͜ʖ ͡°)ʖ ͡°) ͡°)";
 
-            using (var client = factory.Create<WykopSharpClient.WykopSharpClient>(appKey, appSecret, userKey))
+            using (var client = WykopSharpClientFactory.Create<WykopSharpClient.WykopSharpClient>(appKey, appSecret, userKey))
             {
                 client.Authenticate();
 
