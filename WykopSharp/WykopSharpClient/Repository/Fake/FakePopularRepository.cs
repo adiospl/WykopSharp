@@ -11,6 +11,16 @@ namespace WykopSharpClient.Repository.Fake
 {
     public class FakePopularRepository : IPopularRepository
     {
+        public Task<List<Link>> Promoted(int page)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Link>> Upcomming(int page)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<Link>> Promoted(int page, PromotedSort promotedSort)
         {
             throw new NotImplementedException();

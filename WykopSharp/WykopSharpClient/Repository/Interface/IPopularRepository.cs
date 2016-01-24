@@ -7,6 +7,8 @@ namespace WykopSharpClient.Repository.Interface
 {
     public interface IPopularRepository
     {
+        Task<List<Link>> Promoted(int page);
+        Task<List<Link>> Upcomming(int page);
         Task<List<Link>> Promoted(int page, PromotedSort promotedSort);
         Task<List<Link>> Upcomming(int page, PromotedSort promotedSort);
     }

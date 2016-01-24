@@ -145,8 +145,8 @@ namespace WykopSharp
                 {
                     if (!response.IsSuccessStatusCode)
                         throw new InvalidResponseException("Response is not success. ", 0);
-                    
-                    var stringResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                    var stringResponse = response.Content.ReadAsStringAsync().Result;
                     var responseType = CheckResponseType(stringResponse, response);
                     ValidateErrors(stringResponse);
                     
@@ -171,17 +171,27 @@ namespace WykopSharp
             }
         }
 
-        private bool CheckIsValidJSon(string json)
+        private bool CheckIsValidJSon(string strInput)
         {
-            try
+            strInput = strInput.Trim();
+            if ((strInput.StartsWith("{") && strInput.EndsWith("}")) || //For object
+                (strInput.StartsWith("[") && strInput.EndsWith("]"))) //For array
             {
-                JToken token = JObject.Parse(json);
-                return true;
+                try
+                {
+                    var obj = JToken.Parse(strInput);
+                    return true;
+                }
+                catch (JsonReaderException jex)
+                {
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
             }
-            catch (Exception)
-            {
-                return false;
-            }
+            return false;
         }
 
         private ResponseType CheckResponseType(string json, HttpResponseMessage response)
@@ -229,6 +239,8 @@ namespace WykopSharp
 
                 switch (errorResult?.Error?.Code)
                 {
+                    case null:
+                        break;
                     case 1:
                     case 5:
                     case 14:

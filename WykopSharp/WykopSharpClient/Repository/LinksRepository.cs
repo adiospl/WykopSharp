@@ -18,6 +18,21 @@ namespace WykopSharpClient.Repository
         {
         }
 
+        public Task<List<Link>> Promoted(int page)
+        {
+            if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
+
+            var parameters = new HashSet<ApiParameter>
+            {
+                new ApiParameter("page", page),
+            };
+            if (Client.UserKey != null) parameters.Add(new ApiParameter("userkey", Client.UserKey));
+
+            return Client.CallApiMethodWithAuth<List<Link>>(
+                new ApiMethod(ApiV1Constants.LinksPromoted, HttpMethod.Get, parameters)
+                );
+        }
+
         public Task<List<Link>> Promoted(int page, PromotedSort sort)
         {
             if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
