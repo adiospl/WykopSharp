@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using WykopSharp.Model;
+using WykopSharpClient.Model.Constants;
 
 namespace WykopSharpClient.Model
 {
+
+
+
     public class Link : BaseResponse
     {
+
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
 
@@ -70,8 +75,9 @@ namespace WykopSharpClient.Model
         [JsonProperty(PropertyName = "preview")]
         public Uri Preview { get; set; }
 
+        [JsonConverter(typeof(DigStatusConverter))]
         [JsonProperty(PropertyName = "user_vote")]
-        public bool UserVote { get; set; }
+        public DigStatus UserVote { get; set; }
 
         [JsonProperty(PropertyName = "user_favorite")]
         public bool UserFavorite { get; set; }

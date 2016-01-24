@@ -102,7 +102,10 @@ namespace WykopSharpClient
                 catch (AuthorizationException)
                 {
                     retries++;
+                    method.ApiParameters.RemoveWhere(p => p.Name == "userkey");
+
                     Authenticate();
+                    method.ApiParameters.Add(new ApiParameter("userkey", _userKey));
 
                     if (retries == 2)
                     {

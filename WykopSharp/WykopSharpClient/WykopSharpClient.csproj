@@ -120,6 +120,7 @@
     <Compile Include="IWykopSharpClient.cs" />
     <Compile Include="Model\BuryReason.cs" />
     <Compile Include="Model\Constants\ConversationStatus.cs" />
+    <Compile Include="Model\Constants\DigStatus.cs" />
     <Compile Include="Model\Constants\EmbedType.cs" />
     <Compile Include="Model\Constants\NotificationType.cs" />
     <Compile Include="Model\PopularTag.cs" />

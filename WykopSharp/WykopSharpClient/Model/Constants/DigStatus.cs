@@ -3,36 +3,35 @@ using Newtonsoft.Json;
 
 namespace WykopSharpClient.Model.Constants
 {
-    public enum ConversationStatus
+    public enum DigStatus
     {
-        New,
-        Read,
-        None
+        Dig, Bury, False
     }
 
-    public class ConversationStatusConverter : JsonConverter
+    public class DigStatusConverter : JsonConverter
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }
 
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType is string;
-        }
-
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             switch (reader.Value as string)
             {
-                case "new":
-                    return ConversationStatus.New;
-                case "read":
-                    return ConversationStatus.Read;
+                case "dig":
+                    return DigStatus.Dig;
+                case "bury":
+                    return DigStatus.Bury;
+                case "false":
                 default:
-                    return ConversationStatus.None;
+                    return DigStatus.False;
             }
+        }
+
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType is string;
         }
     }
 }
