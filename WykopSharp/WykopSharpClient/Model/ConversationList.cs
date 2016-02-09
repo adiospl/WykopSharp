@@ -5,7 +5,7 @@ using WykopSharpClient.Model.Constants;
 
 namespace WykopSharpClient.Model
 {
-    public class ConversationList : BaseResponse
+    public class ConversationList : ErrorModel
     {
         [JsonProperty(PropertyName = "last_update")]
         public DateTime LastUpdate { get; set; }

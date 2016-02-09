@@ -42,7 +42,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<BooleanResponse> Delete(string username)
+        public Task<BooleanModel> Delete(string username)
         {
             if (string.IsNullOrWhiteSpace(username))
                 throw new ArgumentException("Argument is null or whitespace", nameof(username));
@@ -53,12 +53,12 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", username)
             };
             
-            return Client.CallApiMethodWithAuth<BooleanResponse>(
+            return Client.CallApiMethodWithAuth<BooleanModel>(
                 new ApiMethod(ApiV1Constants.PmDeleteConversation, HttpMethod.Get, parameters, methodParameters)
                 );
         }
 
-        public Task<BooleanResponse> Send(string username, string body, string embed = null)
+        public Task<BooleanModel> Send(string username, string body, string embed = null)
         {
             if (string.IsNullOrWhiteSpace(username))
                 throw new ArgumentException("Argument is null or whitespace", nameof(username));
@@ -77,13 +77,13 @@ namespace WykopSharpClient.Repository
             if (!string.IsNullOrWhiteSpace(embed))
                 postParameters.Add(new StringPostParameter("embed", embed));
             
-            return Client.CallApiMethodWithAuth<BooleanResponse>(
+            return Client.CallApiMethodWithAuth<BooleanModel>(
                 new ApiMethod(ApiV1Constants.PmSendMessage, HttpMethod.Post, parameters, methodParameters,
                     postParameters)
                 );
         }
 
-        public Task<BooleanResponse> Send(string username, string body, ByteFile file)
+        public Task<BooleanModel> Send(string username, string body, ByteFile file)
         {
             if (file == null) throw new ArgumentNullException(nameof(file));
             if (string.IsNullOrWhiteSpace(username))
@@ -102,7 +102,7 @@ namespace WykopSharpClient.Repository
                 new BytePostParameter("embed", file)
             };
             
-            return Client.CallApiMethodWithAuth<BooleanResponse>(
+            return Client.CallApiMethodWithAuth<BooleanModel>(
                 new ApiMethod(ApiV1Constants.PmSendMessage, HttpMethod.Post, parameters, methodParameters,
                     postParameters)
                 );

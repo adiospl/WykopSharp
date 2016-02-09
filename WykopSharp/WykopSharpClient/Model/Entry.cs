@@ -6,7 +6,7 @@ using WykopSharpClient.Model.Constants;
 
 namespace WykopSharpClient.Model
 {
-    public class Entry : BaseResponse
+    public class Entry : ErrorModel
     {
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }

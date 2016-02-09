@@ -4,7 +4,7 @@ using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class Bury : BaseResponse
+    public class Bury : ErrorModel
     {
         [JsonProperty(PropertyName = "reason")]
         public int Reason { get; set; }

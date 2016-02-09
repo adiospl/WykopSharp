@@ -41,7 +41,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<DigResponse> Dig(int linkId)
+        public Task<DigModel> Dig(int linkId)
         {
             if (linkId <= 0) throw new ArgumentOutOfRangeException(nameof(linkId));
 
@@ -51,12 +51,12 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", linkId)
             };
 
-            return Client.CallApiMethodWithAuth<DigResponse>(
+            return Client.CallApiMethodWithAuth<DigModel>(
                 new ApiMethod(ApiV1Constants.LinkDig, HttpMethod.Get, parameters, methodParameter)
                 );
         }
 
-        public Task<DigResponse> Cancel(int linkId)
+        public Task<DigModel> Cancel(int linkId)
         {
             if (linkId <= 0) throw new ArgumentOutOfRangeException(nameof(linkId));
 
@@ -66,12 +66,12 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", linkId)
             };
 
-            return Client.CallApiMethodWithAuth<DigResponse>(
+            return Client.CallApiMethodWithAuth<DigModel>(
                 new ApiMethod(ApiV1Constants.LinkCancel, HttpMethod.Get, parameters, methodParameter)
                 );
         }
 
-        public Task<DigResponse> Bury(int linkId, int buryReason)
+        public Task<DigModel> Bury(int linkId, int buryReason)
         {
             if (linkId <= 0) throw new ArgumentOutOfRangeException(nameof(linkId));
             if (buryReason <= 0) throw new ArgumentOutOfRangeException(nameof(buryReason));
@@ -83,7 +83,7 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param2", buryReason)
             };
 
-            return Client.CallApiMethodWithAuth<DigResponse>(
+            return Client.CallApiMethodWithAuth<DigModel>(
                 new ApiMethod(ApiV1Constants.LinkBury, HttpMethod.Get, parameters, methodParameter)
                 );
         }
@@ -118,7 +118,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<DigResponse> Digs(int linkId)
+        public Task<DigModel> Digs(int linkId)
         {
             if (linkId <= 0) throw new ArgumentOutOfRangeException(nameof(linkId));
 
@@ -128,7 +128,7 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", linkId)
             };
 
-            return Client.CallApiMethodWithAuth<DigResponse>(
+            return Client.CallApiMethodWithAuth<DigModel>(
                 new ApiMethod(ApiV1Constants.LinkDig, HttpMethod.Post, parameters, methodParameter)
                 );
         }
@@ -148,7 +148,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<BooleanResponse> Observe(int linkId)
+        public Task<BooleanModel> Observe(int linkId)
         {
             if (linkId <= 0) throw new ArgumentOutOfRangeException(nameof(linkId));
 
@@ -158,12 +158,12 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", linkId)
             };
 
-            return Client.CallApiMethodWithAuth<BooleanResponse>(
+            return Client.CallApiMethodWithAuth<BooleanModel>(
                 new ApiMethod(ApiV1Constants.LinkObserve, HttpMethod.Post, parameters, methodParameter)
                 );
         }
 
-        public Task<BooleanResponse> Favorite(int linkId)
+        public Task<BooleanModel> Favorite(int linkId)
         {
             if (linkId <= 0) throw new ArgumentOutOfRangeException(nameof(linkId));
 
@@ -173,7 +173,7 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", linkId)
             };
 
-            return Client.CallApiMethodWithAuth<BooleanResponse>(
+            return Client.CallApiMethodWithAuth<BooleanModel>(
                 new ApiMethod(ApiV1Constants.LinkFavorite, HttpMethod.Post, parameters, methodParameter)
                 );
         }

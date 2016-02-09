@@ -1,8 +1,9 @@
 ﻿using Newtonsoft.Json;
+using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class PopularTag
+    public class PopularTag : ErrorModel
     {
         [JsonProperty(PropertyName = "tag")]
         public string Tag { get; set; }

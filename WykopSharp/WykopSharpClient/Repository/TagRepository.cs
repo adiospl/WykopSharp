@@ -74,7 +74,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<BooleanResponse> Observe(string tagName)
+        public Task<BooleanModel> Observe(string tagName)
         {
             if (string.IsNullOrWhiteSpace(tagName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(tagName));
@@ -85,12 +85,12 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", tagName.Replace("#", ""))
             };
 
-            return Client.CallApiMethodWithAuth<BooleanResponse>(
+            return Client.CallApiMethodWithAuth<BooleanModel>(
                 new ApiMethod(ApiV1Constants.TagObserve, HttpMethod.Get, parameters, methodParameters)
                 );
         }
 
-        public Task<BooleanResponse> Unobserve(string tagName)
+        public Task<BooleanModel> Unobserve(string tagName)
         {
             if (string.IsNullOrWhiteSpace(tagName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(tagName));
@@ -101,12 +101,12 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", tagName.Replace("#", ""))
             };
 
-            return Client.CallApiMethodWithAuth<BooleanResponse>(
+            return Client.CallApiMethodWithAuth<BooleanModel>(
                 new ApiMethod(ApiV1Constants.TagUnobserve, HttpMethod.Get, parameters, methodParameters)
                 );
         }
 
-        public Task<BooleanResponse> Block(string tagName)
+        public Task<BooleanModel> Block(string tagName)
         {
             if (string.IsNullOrWhiteSpace(tagName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(tagName));
@@ -117,12 +117,12 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", tagName.Replace("#", ""))
             };
 
-            return Client.CallApiMethodWithAuth<BooleanResponse>(
+            return Client.CallApiMethodWithAuth<BooleanModel>(
                 new ApiMethod(ApiV1Constants.TagBlock, HttpMethod.Get, parameters, methodParameters)
                 );
         }
 
-        public Task<BooleanResponse> Unblock(string tagName)
+        public Task<BooleanModel> Unblock(string tagName)
         {
             if (string.IsNullOrWhiteSpace(tagName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(tagName));
@@ -133,7 +133,7 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", tagName.Replace("#", ""))
             };
 
-            return Client.CallApiMethodWithAuth<BooleanResponse>(
+            return Client.CallApiMethodWithAuth<BooleanModel>(
                 new ApiMethod(ApiV1Constants.TagUnblock, HttpMethod.Get, parameters, methodParameters)
                 );
         }

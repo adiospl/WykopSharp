@@ -3,19 +3,19 @@ using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class RecivedId : BaseResponse
+    public class RecivedId : ErrorModel
     {
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
     }
 
-    public class RecivedVote : BaseResponse
+    public class RecivedVote : ErrorModel
     {
         [JsonProperty(PropertyName = "vote")]
         public int Vote { get; set; }
     }
 
-    public class RecivedCount : BaseResponse
+    public class RecivedCount : ErrorModel
     {
 
         [JsonProperty(PropertyName = "count")]
@@ -23,7 +23,7 @@ namespace WykopSharpClient.Model
 
     }
     
-    public class DigResponse : BaseResponse
+    public class DigModel : ErrorModel
     {
 
         [JsonProperty(PropertyName = "success")]

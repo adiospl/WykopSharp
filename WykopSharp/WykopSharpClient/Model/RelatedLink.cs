@@ -4,7 +4,7 @@ using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class RelatedLink : BaseResponse
+    public class RelatedLink : ErrorModel
     {
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
@@ -13,7 +13,7 @@ namespace WykopSharpClient.Model
         public string Title { get; set; }
 
         [JsonProperty(PropertyName = "url")]
-        public string Url { get; set; }
+        public Uri Url { get; set; }
 
         [JsonProperty(PropertyName = "plus18")]
         public bool Plus18 { get; set; }

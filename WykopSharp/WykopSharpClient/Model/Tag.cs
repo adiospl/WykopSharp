@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class Counters
+    public class Counters : BaseModel
     {
 
         [JsonProperty(PropertyName = "total")]
@@ -17,7 +18,7 @@ namespace WykopSharpClient.Model
         public int Links { get; set; }
     }
 
-    public class Meta
+    public class Meta : BaseModel
     {
 
         [JsonProperty(PropertyName = "tag")]
@@ -33,7 +34,7 @@ namespace WykopSharpClient.Model
         public Counters Counters { get; set; }
     }
 
-    public class TagItem
+    public class TagItem : BaseModel
     {
 
         [JsonProperty(PropertyName = "id")]
@@ -61,7 +62,7 @@ namespace WykopSharpClient.Model
         public string AuthorSex { get; set; }
 
         [JsonProperty(PropertyName = "date")]
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         [JsonProperty(PropertyName = "body")]
         public string Body { get; set; }
@@ -70,7 +71,7 @@ namespace WykopSharpClient.Model
         public object Source { get; set; }
 
         [JsonProperty(PropertyName = "url")]
-        public string Url { get; set; }
+        public Uri Url { get; set; }
 
         [JsonProperty(PropertyName = "receiver")]
         public object Receiver { get; set; }
@@ -190,7 +191,7 @@ namespace WykopSharpClient.Model
         public bool? Commented { get; set; }
     }
 
-    public class Tag : BaseResponse
+    public class Tag : ErrorModel
     {
         [JsonProperty(PropertyName = "meta")]
         public Meta Meta { get; set; }

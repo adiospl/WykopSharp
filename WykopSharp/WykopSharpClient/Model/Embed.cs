@@ -5,7 +5,7 @@ using WykopSharpClient.Model.Constants;
 
 namespace WykopSharpClient.Model
 {
-    public class Embed : BaseResponse
+    public class Embed : ErrorModel
     {
         [JsonConverter(typeof(EmbedTypeConverter))]
         [JsonProperty(PropertyName = "type")]

@@ -45,14 +45,14 @@ namespace WykopSharpClient
         #region LINKS
 
         public const string LinksPromoted = "Links/Promoted";
-        public const string LinksUpcomming = "Links/Upcomming";
+        public const string LinksUpcomming = "Links/Upcoming";
 
         #endregion
 
         #region POPULAR
 
         public const string PopularPromoted = "Popular/Promoted";
-        public const string PopularUpcomming = "Popular/Upcomming";
+        public const string PopularUpcomming = "Popular/Upcoming";
 
         #endregion
 

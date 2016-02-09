@@ -4,7 +4,7 @@ using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class PmMessage : BaseResponse
+    public class PmMessage : ErrorModel
     {
         [JsonProperty(PropertyName = "author")]
         public string Author { get; set; }

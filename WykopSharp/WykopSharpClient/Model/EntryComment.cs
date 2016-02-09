@@ -4,7 +4,7 @@ using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class EntryComment : BaseResponse
+    public class EntryComment : ErrorModel
     {
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }

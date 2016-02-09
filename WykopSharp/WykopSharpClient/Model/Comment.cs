@@ -4,7 +4,7 @@ using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class Comment : BaseResponse
+    public class Comment : ErrorModel
     {
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
@@ -44,5 +44,7 @@ namespace WykopSharpClient.Model
 
         [JsonProperty(PropertyName = "link")]
         public Link Link { get; set; }
+
+        public bool IsParent => Id == ParentId;
     }
 }

@@ -152,7 +152,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<BooleanResponse> MarkAsReadNotification(int notificationId)
+        public Task<BooleanModel> MarkAsReadNotification(int notificationId)
         {
             if (notificationId <= 0) throw new ArgumentOutOfRangeException(nameof(notificationId));
             var parameters = GetApiParameterSet();
@@ -161,7 +161,7 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", notificationId)
             };
 
-            return Client.CallApiMethodWithAuth<BooleanResponse>(
+            return Client.CallApiMethodWithAuth<BooleanModel>(
                 new ApiMethod(ApiV1Constants.MyWykopMarkAsReadNotification, HttpMethod.Get, parameters, methodParameters)
                 );
         }

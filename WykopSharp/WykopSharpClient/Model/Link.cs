@@ -6,10 +6,8 @@ using WykopSharpClient.Model.Constants;
 
 namespace WykopSharpClient.Model
 {
-
-
-
-    public class Link : BaseResponse
+    
+    public class Link : ErrorModel
     {
 
         [JsonProperty(PropertyName = "id")]

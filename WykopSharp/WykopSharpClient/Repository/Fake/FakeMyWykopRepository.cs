@@ -26,7 +26,7 @@ namespace WykopSharpClient.Repository.Fake
             throw new NotImplementedException();
         }
 
-        public Task<BooleanResponse> MarkAsReadNotification(int notificationId)
+        public Task<BooleanModel> MarkAsReadNotification(int notificationId)
         {
             throw new NotImplementedException();
         }

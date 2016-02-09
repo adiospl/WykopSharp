@@ -5,7 +5,7 @@ using WykopSharpClient.Model.Constants;
 
 namespace WykopSharpClient.Model
 {
-    public class Notification : BaseResponse
+    public class Notification : ErrorModel
     {
         [JsonProperty(PropertyName = "new")]
         public bool New;

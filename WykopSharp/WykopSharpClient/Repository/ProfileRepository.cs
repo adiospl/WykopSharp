@@ -147,7 +147,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<BooleanResponse> Observe(string profileName)
+        public Task<BooleanModel> Observe(string profileName)
         {
             if (string.IsNullOrWhiteSpace(profileName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(profileName));
@@ -158,12 +158,12 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", profileName)
             };
 
-            return Client.CallApiMethodWithAuth<BooleanResponse>(
+            return Client.CallApiMethodWithAuth<BooleanModel>(
                 new ApiMethod(ApiV1Constants.ProfileObserve, HttpMethod.Get, parameters, methodParameters)
                 );
         }
 
-        public Task<BooleanResponse> Unobserve(string profileName)
+        public Task<BooleanModel> Unobserve(string profileName)
         {
             if (string.IsNullOrWhiteSpace(profileName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(profileName));
@@ -174,12 +174,12 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", profileName)
             };
 
-            return Client.CallApiMethodWithAuth<BooleanResponse>(
+            return Client.CallApiMethodWithAuth<BooleanModel>(
                 new ApiMethod(ApiV1Constants.ProfileUnobserve, HttpMethod.Get, parameters, methodParameters)
                 );
         }
 
-        public Task<BooleanResponse> Block(string profileName)
+        public Task<BooleanModel> Block(string profileName)
         {
             if (string.IsNullOrWhiteSpace(profileName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(profileName));
@@ -190,12 +190,12 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", profileName)
             };
 
-            return Client.CallApiMethodWithAuth<BooleanResponse>(
+            return Client.CallApiMethodWithAuth<BooleanModel>(
                 new ApiMethod(ApiV1Constants.ProfileBlock, HttpMethod.Get, parameters, methodParameters)
                 );
         }
 
-        public Task<BooleanResponse> Unblock(string profileName)
+        public Task<BooleanModel> Unblock(string profileName)
         {
             if (string.IsNullOrWhiteSpace(profileName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(profileName));
@@ -206,7 +206,7 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", profileName)
             };
 
-            return Client.CallApiMethodWithAuth<BooleanResponse>(
+            return Client.CallApiMethodWithAuth<BooleanModel>(
                 new ApiMethod(ApiV1Constants.ProfileUnblock, HttpMethod.Get, parameters, methodParameters)
                 );
         }

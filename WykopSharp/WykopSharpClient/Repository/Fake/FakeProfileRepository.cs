@@ -16,7 +16,7 @@ namespace WykopSharpClient.Repository.Fake
             throw new NotImplementedException();
         }
 
-        public Task<BooleanResponse> Block(string profileName)
+        public Task<BooleanModel> Block(string profileName)
         {
             throw new NotImplementedException();
         }
@@ -71,7 +71,7 @@ namespace WykopSharpClient.Repository.Fake
             throw new NotImplementedException();
         }
 
-        public Task<BooleanResponse> Observe(string profileName)
+        public Task<BooleanModel> Observe(string profileName)
         {
             throw new NotImplementedException();
         }
@@ -86,12 +86,12 @@ namespace WykopSharpClient.Repository.Fake
             throw new NotImplementedException();
         }
 
-        public Task<BooleanResponse> Unblock(string profileName)
+        public Task<BooleanModel> Unblock(string profileName)
         {
             throw new NotImplementedException();
         }
 
-        public Task<BooleanResponse> Unobserve(string profileName)
+        public Task<BooleanModel> Unobserve(string profileName)
         {
             throw new NotImplementedException();
         }

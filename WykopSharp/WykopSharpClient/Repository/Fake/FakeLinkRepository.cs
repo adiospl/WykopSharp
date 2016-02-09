@@ -11,7 +11,7 @@ namespace WykopSharpClient.Repository.Fake
 {
     public class FakeLinkRepository : ILinkRepository
     {
-        public Task<DigResponse> Bury(int linkId, int buryReason)
+        public Task<DigModel> Bury(int linkId, int buryReason)
         {
             throw new NotImplementedException();
         }
@@ -21,7 +21,7 @@ namespace WykopSharpClient.Repository.Fake
             throw new NotImplementedException();
         }
 
-        public Task<DigResponse> Cancel(int linkId)
+        public Task<DigModel> Cancel(int linkId)
         {
             throw new NotImplementedException();
         }
@@ -31,17 +31,17 @@ namespace WykopSharpClient.Repository.Fake
             throw new NotImplementedException();
         }
 
-        public Task<DigResponse> Dig(int linkId)
+        public Task<DigModel> Dig(int linkId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<DigResponse> Digs(int linkId)
+        public Task<DigModel> Digs(int linkId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<BooleanResponse> Favorite(int linkId)
+        public Task<BooleanModel> Favorite(int linkId)
         {
             throw new NotImplementedException();
         }
@@ -51,7 +51,7 @@ namespace WykopSharpClient.Repository.Fake
             throw new NotImplementedException();
         }
 
-        public Task<BooleanResponse> Observe(int linkId)
+        public Task<BooleanModel> Observe(int linkId)
         {
             throw new NotImplementedException();
         }

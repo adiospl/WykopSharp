@@ -157,7 +157,7 @@ namespace WykopSharp
                         case ResponseType.ValueArray:
                             // API is incosistent - return array with boolean,
                             // but i don't know is that the only one behaviour
-                            return (dynamic) new BooleanResponse(stringResponse);
+                            return (dynamic) new BooleanModel(stringResponse);
                     }
 
                     using (var reader = new JsonTextReader(new StringReader(stringResponse)))
@@ -174,24 +174,23 @@ namespace WykopSharp
         private bool CheckIsValidJSon(string strInput)
         {
             strInput = strInput.Trim();
-            if ((strInput.StartsWith("{") && strInput.EndsWith("}")) || //For object
-                (strInput.StartsWith("[") && strInput.EndsWith("]"))) //For array
+            try
             {
+                var obj = JToken.Parse(strInput);
                 try
                 {
-                    var obj = JToken.Parse(strInput);
-                    return true;
+                    if (obj?.First.Value<bool>() == true || false) return false;
                 }
-                catch (JsonReaderException jex)
+                catch (Exception)
                 {
-                    return false;
+
                 }
-                catch (Exception ex)
-                {
-                    return false;
-                }
+                return true;
             }
-            return false;
+            catch (JsonReaderException)
+            {
+                return false;
+            }
         }
 
         private ResponseType CheckResponseType(string json, HttpResponseMessage response)
@@ -235,7 +234,7 @@ namespace WykopSharp
             using (var reader = new JsonTextReader(new StringReader(response)))
             {
                 var serializer = CreateSerializer(null);
-                var errorResult = serializer.Deserialize<ErrorResponse>(reader);
+                var errorResult = serializer.Deserialize<ErrorModel>(reader);
 
                 switch (errorResult?.Error?.Code)
                 {

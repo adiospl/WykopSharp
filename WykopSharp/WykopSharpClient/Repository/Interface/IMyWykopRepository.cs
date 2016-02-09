@@ -10,7 +10,7 @@ namespace WykopSharpClient.Repository.Interface
         Task<List<Notification>> HashTagsNotifications(int page = 1);
         Task<RecivedCount> HashTagsNotificationsCount();
         Task<List<MyWykop>> Index(int page = 1);
-        Task<BooleanResponse> MarkAsReadNotification(int notificationId);
+        Task<BooleanModel> MarkAsReadNotification(int notificationId);
         Task<List<MyWykop>> Mine(int page = 1);
         Task<List<Notification>> Notifications(int page = 1);
         Task<RecivedCount> NotificationsCount();

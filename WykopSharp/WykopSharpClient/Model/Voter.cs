@@ -1,10 +1,11 @@
 ﻿using System;
 using Newtonsoft.Json;
+using WykopSharp.Model;
 using WykopSharpClient.Model.Constants;
 
 namespace WykopSharpClient.Model
 {
-    public class Voter
+    public class Voter : ErrorModel
     {
         [JsonProperty(PropertyName = "author")]
         public string Author { get; set; }

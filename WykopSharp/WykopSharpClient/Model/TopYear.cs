@@ -4,7 +4,7 @@ using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class TopYear : BaseResponse
+    public class TopYear : ErrorModel
     {
 
         [JsonProperty(PropertyName = "1")]

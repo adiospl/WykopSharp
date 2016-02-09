@@ -5,11 +5,8 @@ namespace WykopSharpClient.Model.Constants
 {
     public enum EmbedType
     {
-        Type,
-        Preview,
-        Url,
-        Source,
-        Plus18,
+        Image,
+        Video,
         None
     }
 
@@ -17,23 +14,17 @@ namespace WykopSharpClient.Model.Constants
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             switch (reader.Value as string)
             {
-                case "type":
-                    return EmbedType.Type;
-                case "preview":
-                    return EmbedType.Preview;
-                case "url":
-                    return EmbedType.Url;
-                case "source":
-                    return EmbedType.Source;
-                case "plus18":
-                    return EmbedType.Plus18;
+                case "image":
+                    return EmbedType.Image;
+                case "video":
+                    return EmbedType.Video;
                 default:
                     return EmbedType.None;
             }
@@ -44,4 +35,5 @@ namespace WykopSharpClient.Model.Constants
             return objectType is string;
         }
     }
+
 }

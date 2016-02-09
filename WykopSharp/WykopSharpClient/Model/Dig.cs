@@ -4,7 +4,7 @@ using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class Dig : BaseResponse
+    public class Dig : ErrorModel
     {
         [JsonProperty(PropertyName = "author")]
         public string Author { get; set; }

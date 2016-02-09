@@ -12,7 +12,7 @@ namespace WykopSharpClient.Repository.Fake
 {
     public class FakeConversationRepository : IConversationRepository
     {
-        public Task<BooleanResponse> Delete(string username)
+        public Task<BooleanModel> Delete(string username)
         {
             throw new NotImplementedException();
         }
@@ -22,12 +22,12 @@ namespace WykopSharpClient.Repository.Fake
             throw new NotImplementedException();
         }
 
-        public Task<BooleanResponse> Send(string username, string body, ByteFile file)
+        public Task<BooleanModel> Send(string username, string body, ByteFile file)
         {
             throw new NotImplementedException();
         }
 
-        public Task<BooleanResponse> Send(string username, string body, string embed = null)
+        public Task<BooleanModel> Send(string username, string body, string embed = null)
         {
             throw new NotImplementedException();
         }

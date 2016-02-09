@@ -3,7 +3,7 @@ using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class BuryReason : BaseResponse
+    public class BuryReason : ErrorModel
     {
 
         [JsonProperty(PropertyName = "id")]

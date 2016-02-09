@@ -11,7 +11,7 @@ namespace WykopSharpClient.Repository.Fake
 {
     public class FakeTagRepository : ITagRepository
     {
-        public Task<BooleanResponse> Block(string tagName)
+        public Task<BooleanModel> Block(string tagName)
         {
             throw new NotImplementedException();
         }
@@ -31,17 +31,17 @@ namespace WykopSharpClient.Repository.Fake
             throw new NotImplementedException();
         }
 
-        public Task<BooleanResponse> Observe(string tagName)
+        public Task<BooleanModel> Observe(string tagName)
         {
             throw new NotImplementedException();
         }
 
-        public Task<BooleanResponse> Unblock(string tagName)
+        public Task<BooleanModel> Unblock(string tagName)
         {
             throw new NotImplementedException();
         }
 
-        public Task<BooleanResponse> Unobserve(string tagName)
+        public Task<BooleanModel> Unobserve(string tagName)
         {
             throw new NotImplementedException();
         }

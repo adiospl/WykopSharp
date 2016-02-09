@@ -4,7 +4,7 @@ using WykopSharp.Model;
 
 namespace WykopSharpClient.Model
 {
-    public class Profile : BaseResponse
+    public class Profile : ErrorModel
     {
         [JsonProperty(PropertyName = "login")]
         public string Login { get; set; }
