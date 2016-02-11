@@ -3,6 +3,11 @@
 
     public class BooleanModel : BaseModel
     {
+        public BooleanModel()
+        {
+            
+        }
+
         public BooleanModel(string response)
         {
             Success = response.Contains("true");

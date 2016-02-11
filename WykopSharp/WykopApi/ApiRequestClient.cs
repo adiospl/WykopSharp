@@ -157,7 +157,9 @@ namespace WykopSharp
                         case ResponseType.ValueArray:
                             // API is incosistent - return array with boolean,
                             // but i don't know is that the only one behaviour
-                            return (dynamic) new BooleanModel(stringResponse);
+                            var booleanResult = new BooleanModel();
+                            booleanResult.Success = stringResponse.Contains("true") ? true : false;
+                            return (dynamic) booleanResult;
                     }
 
                     using (var reader = new JsonTextReader(new StringReader(stringResponse)))

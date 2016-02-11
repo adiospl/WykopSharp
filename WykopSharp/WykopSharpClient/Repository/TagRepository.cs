@@ -36,7 +36,7 @@ namespace WykopSharpClient.Repository
                 );
         }
 
-        public Task<Tag> Links(string tagName, int page = 1)
+        public Task<List<Link>> Links(string tagName, int page = 1)
         {
             if (string.IsNullOrWhiteSpace(tagName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(tagName));
@@ -50,12 +50,12 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", tagName.Replace("#", ""))
             };
 
-            return Client.CallApiMethodWithAuth<Tag>(
+            return Client.CallApiMethodWithAuth<List<Link>>(
                 new ApiMethod(ApiV1Constants.TagLinks, HttpMethod.Get, parameters, methodParameters)
                 );
         }
 
-        public Task<Tag> Entries(string tagName, int page = 1)
+        public Task<List<Entry>> Entries(string tagName, int page = 1)
         {
             if (string.IsNullOrWhiteSpace(tagName))
                 throw new ArgumentException("Argument is null or whitespace", nameof(tagName));
@@ -69,7 +69,7 @@ namespace WykopSharpClient.Repository
                 new StringMethodParameter("param1", tagName.Replace("#", ""))
             };
 
-            return Client.CallApiMethodWithAuth<Tag>(
+            return Client.CallApiMethodWithAuth<List<Entry>>(
                 new ApiMethod(ApiV1Constants.TagEntries, HttpMethod.Get, parameters, methodParameters)
                 );
         }

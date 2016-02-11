@@ -6,7 +6,7 @@ using WykopSharpClient.Model.Constants;
 
 namespace WykopSharpClient.Model
 {
-    public class Entry : ErrorModel
+    public class Entry : ErrorModel, IWykopItem
     {
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
@@ -33,7 +33,7 @@ namespace WykopSharpClient.Model
         public string AuthorSex { get; set; }
 
         [JsonProperty(PropertyName = "date")]
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         [JsonProperty(PropertyName = "body")]
         public string Body { get; set; }
@@ -60,7 +60,7 @@ namespace WykopSharpClient.Model
         public Uri ReceiverAvatarLo { get; set; }
 
         [JsonProperty(PropertyName = "receiver_group")]
-        public UserType ReceiverGroup { get; set; }
+        public object ReceiverGroup { get; set; }
 
         [JsonProperty(PropertyName = "receiver_sex")]
         public string ReceiverSex { get; set; }
@@ -74,8 +74,9 @@ namespace WykopSharpClient.Model
         [JsonProperty(PropertyName = "vote_count")]
         public int VoteCount { get; set; }
 
+        [JsonConverter(typeof(DigStatusConverter))]
         [JsonProperty(PropertyName = "user_vote")]
-        public int UserVote { get; set; }
+        public DigStatus UserVote { get; set; }
 
         [JsonProperty(PropertyName = "user_favorite")]
         public bool UserFavorite { get; set; }
@@ -93,7 +94,7 @@ namespace WykopSharpClient.Model
         public bool Deleted { get; set; }
 
         [JsonProperty(PropertyName = "violation_url")]
-        public object ViolationUrl { get; set; }
+        public Uri ViolationUrl { get; set; }
 
         [JsonProperty(PropertyName = "can_comment")]
         public object CanComment { get; set; }

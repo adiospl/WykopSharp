@@ -123,6 +123,8 @@
     <Compile Include="Model\Constants\DigStatus.cs" />
     <Compile Include="Model\Constants\EmbedType.cs" />
     <Compile Include="Model\Constants\NotificationType.cs" />
+    <Compile Include="Model\Constants\WykopType.cs" />
+    <Compile Include="Model\IWykopItem.cs" />
     <Compile Include="Model\PopularTag.cs" />
     <Compile Include="Model\Tag.cs" />
     <Compile Include="Model\TopYear.cs" />

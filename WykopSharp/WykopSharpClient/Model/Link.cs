@@ -7,7 +7,7 @@ using WykopSharpClient.Model.Constants;
 namespace WykopSharpClient.Model
 {
     
-    public class Link : ErrorModel
+    public class Link : ErrorModel, IWykopItem
     {
 
         [JsonProperty(PropertyName = "id")]
@@ -28,9 +28,6 @@ namespace WykopSharpClient.Model
         [JsonProperty(PropertyName = "source_url")]
         public Uri SourceUrl { get; set; }
 
-        [JsonProperty(PropertyName = "vote_count")]
-        public int VoteCount { get; set; }
-
         [JsonProperty(PropertyName = "comment_count")]
         public int CommentCount { get; set; }
 
@@ -47,7 +44,7 @@ namespace WykopSharpClient.Model
         public string Author { get; set; }
 
         [JsonProperty(PropertyName = "author_group")]
-        public int AuthorGroup { get; set; }
+        public UserType AuthorGroup { get; set; }
 
         [JsonProperty(PropertyName = "author_avatar")]
         public Uri AuthorAvatar { get; set; }
@@ -72,6 +69,9 @@ namespace WykopSharpClient.Model
 
         [JsonProperty(PropertyName = "preview")]
         public Uri Preview { get; set; }
+        
+        [JsonProperty(PropertyName = "vote_count")]
+        public int VoteCount { get; set; }
 
         [JsonConverter(typeof(DigStatusConverter))]
         [JsonProperty(PropertyName = "user_vote")]
@@ -108,7 +108,7 @@ namespace WykopSharpClient.Model
         public string CategoryName { get; set; }
 
         [JsonProperty(PropertyName = "violation_url")]
-        public string ViolationUrl { get; set; }
+        public Uri ViolationUrl { get; set; }
 
         [JsonProperty(PropertyName = "info")]
         public object Info { get; set; }
