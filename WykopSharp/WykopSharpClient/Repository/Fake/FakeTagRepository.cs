@@ -16,7 +16,7 @@ namespace WykopSharpClient.Repository.Fake
             throw new NotImplementedException();
         }
 
-        public Task<List<Entry>> Entries(string tagName, int page = 1)
+        public Task<Tag> Entries(string tagName, int page = 1)
         {
             throw new NotImplementedException();
         }
@@ -26,7 +26,7 @@ namespace WykopSharpClient.Repository.Fake
             throw new NotImplementedException();
         }
 
-        public Task<List<Link>> Links(string tagName, int page = 1)
+        public Task<Tag> Links(string tagName, int page = 1)
         {
             throw new NotImplementedException();
         }

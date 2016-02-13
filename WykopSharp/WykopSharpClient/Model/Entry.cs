@@ -66,7 +66,7 @@ namespace WykopSharpClient.Model
         public string ReceiverSex { get; set; }
 
         [JsonProperty(PropertyName = "comments")]
-        public List<Comment> Comments { get; set; }
+        public List<EntryComment> Comments { get; set; }
 
         [JsonProperty(PropertyName = "blocked")]
         public bool Blocked { get; set; }
