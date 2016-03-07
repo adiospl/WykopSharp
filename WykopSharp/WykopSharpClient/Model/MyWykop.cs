@@ -1,19 +1,15 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using System;
+using WykopSharpClient.Model.Constants;
 
 namespace WykopSharpClient.Model
 {
-    public class MyWykop : Entry
+    [JsonConverter(typeof(WykopItemArrayTypeConverter))]
+    public class MyWykop
     {
-        //[JsonProperty(PropertyName = "type")]
-        //public string Type { get; set; }
-
-        //[JsonProperty(PropertyName = "comments")]
-        //public List<Comment> Comments { get; set; }
-
-        [JsonProperty(PropertyName = "commented")]
-        public bool Commented { get; set; }
-
-        [JsonProperty(PropertyName = "entry")]
-        public Entry Entry { get; set; }
+        [JsonConverter(typeof(WykopItemArrayTypeConverter))]
+        [JsonProperty(PropertyName = "items")]
+        public List<IWykopItem> Items { get; set; }
     }
 }

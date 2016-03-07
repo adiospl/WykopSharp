@@ -13,6 +13,12 @@ namespace WykopSharpClient.Model
     {
         [JsonProperty(PropertyName = "vote")]
         public int Vote { get; set; }
+
+        [JsonProperty(PropertyName = "vote_plus")]
+        public int VotePlus { get; set; }
+
+        [JsonProperty(PropertyName = "vote_minus")]
+        public int VoteMinus { get; set; }
     }
 
     public class RecivedCount : ErrorModel

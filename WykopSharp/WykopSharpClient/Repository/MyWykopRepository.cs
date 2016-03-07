@@ -17,78 +17,84 @@ namespace WykopSharpClient.Repository
         {
         }
 
-        public Task<List<MyWykop>> Index(int page = 1)
+        public Task<List<IWykopItem>> Index(int page = 1)
         {
             if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
 
             var parameters = GetApiParameterSet();
             parameters.Add(new ApiParameter("page", page));
 
-            return Client.CallApiMethodWithAuth<List<MyWykop>>(
-                new ApiMethod(ApiV1Constants.MyWykopIndex, HttpMethod.Get, parameters)
+            return Client.CallApiMethodWithAuth<List<IWykopItem>>(
+                new ApiMethod(ApiV1Constants.MyWykopIndex, HttpMethod.Get, parameters),
+                new List<Newtonsoft.Json.JsonConverter>() { new WykopItemArrayTypeConverter() }
                 );
         }
 
-        public Task<List<MyWykop>> Tags(int page = 1)
+        public Task<List<IWykopItem>> Tags(int page = 1)
         {
             if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
 
             var parameters = GetApiParameterSet();
             parameters.Add(new ApiParameter("page", page));
 
-            return Client.CallApiMethodWithAuth<List<MyWykop>>(
-                new ApiMethod(ApiV1Constants.MyWykopTags, HttpMethod.Get, parameters)
+            return Client.CallApiMethodWithAuth<List<IWykopItem>>(
+                new ApiMethod(ApiV1Constants.MyWykopTags, HttpMethod.Get, parameters),
+                new List<Newtonsoft.Json.JsonConverter>() { new WykopItemArrayTypeConverter() }
                 );
         }
 
-        public Task<List<MyWykop>> Users(int page = 1)
+        public Task<List<IWykopItem>> Users(int page = 1)
         {
             if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
 
             var parameters = GetApiParameterSet();
             parameters.Add(new ApiParameter("page", page));
 
-            return Client.CallApiMethodWithAuth<List<MyWykop>>(
-                new ApiMethod(ApiV1Constants.MyWykopUsers, HttpMethod.Get, parameters)
-                );
-        }
-
-        [Obsolete]
-        public Task<List<MyWykop>> Observing(int page = 1)
-        {
-            if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
-
-            var parameters = GetApiParameterSet();
-            parameters.Add(new ApiParameter("page", page));
-
-            return Client.CallApiMethodWithAuth<List<MyWykop>>(
-                new ApiMethod(ApiV1Constants.MyWykopObserving, HttpMethod.Get, parameters)
+            return Client.CallApiMethodWithAuth<List<IWykopItem>>(
+                new ApiMethod(ApiV1Constants.MyWykopUsers, HttpMethod.Get, parameters),
+                new List<Newtonsoft.Json.JsonConverter>() { new WykopItemArrayTypeConverter() }
                 );
         }
 
         [Obsolete]
-        public Task<List<MyWykop>> Mine(int page = 1)
+        public Task<List<IWykopItem>> Observing(int page = 1)
         {
             if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
 
             var parameters = GetApiParameterSet();
             parameters.Add(new ApiParameter("page", page));
 
-            return Client.CallApiMethodWithAuth<List<MyWykop>>(
-                new ApiMethod(ApiV1Constants.MyWykopMine, HttpMethod.Get, parameters)
+            return Client.CallApiMethodWithAuth<List<IWykopItem>>(
+                new ApiMethod(ApiV1Constants.MyWykopObserving, HttpMethod.Get, parameters),
+                new List<Newtonsoft.Json.JsonConverter>() { new WykopItemArrayTypeConverter() }
                 );
         }
 
         [Obsolete]
-        public Task<List<MyWykop>> Recived(int page = 1)
+        public Task<List<IWykopItem>> Mine(int page = 1)
         {
             if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
 
             var parameters = GetApiParameterSet();
             parameters.Add(new ApiParameter("page", page));
 
-            return Client.CallApiMethodWithAuth<List<MyWykop>>(
-                new ApiMethod(ApiV1Constants.MyWykopReceived, HttpMethod.Get, parameters)
+            return Client.CallApiMethodWithAuth<List<IWykopItem>>(
+                new ApiMethod(ApiV1Constants.MyWykopMine, HttpMethod.Get, parameters),
+                new List<Newtonsoft.Json.JsonConverter>() { new WykopItemArrayTypeConverter() }
+                );
+        }
+
+        [Obsolete]
+        public Task<List<IWykopItem>> Recived(int page = 1)
+        {
+            if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
+
+            var parameters = GetApiParameterSet();
+            parameters.Add(new ApiParameter("page", page));
+
+            return Client.CallApiMethodWithAuth<List<IWykopItem>>(
+                new ApiMethod(ApiV1Constants.MyWykopReceived, HttpMethod.Get, parameters),
+                new List<Newtonsoft.Json.JsonConverter>() { new WykopItemArrayTypeConverter() }
                 );
         }
 

@@ -149,19 +149,22 @@ namespace WykopSharp
                     var stringResponse = response.Content.ReadAsStringAsync().Result;
                     var responseType = CheckResponseType(stringResponse, response);
                     ValidateErrors(stringResponse);
-                    
+
                     switch (responseType)
                     {
+                        case ResponseType.Unsupported:
+                        case ResponseType.Json:
+                            break;
                         case ResponseType.Html:
-                            return (dynamic) new HtmlResponse() { Html = stringResponse };
+                            return (dynamic)new HtmlResponse() { Html = stringResponse };
                         case ResponseType.ValueArray:
                             // API is incosistent - return array with boolean,
                             // but i don't know is that the only one behaviour
                             var booleanResult = new BooleanModel();
                             booleanResult.Success = stringResponse.Contains("true") ? true : false;
-                            return (dynamic) booleanResult;
+                            return (dynamic)booleanResult;
                     }
-
+                    
                     using (var reader = new JsonTextReader(new StringReader(stringResponse)))
                     {
                         var serializer = CreateSerializer(converters);

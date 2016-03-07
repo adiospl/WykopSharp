@@ -21,7 +21,7 @@ namespace WykopSharpClient.Repository.Fake
             throw new NotImplementedException();
         }
 
-        public Task<List<MyWykop>> Index(int page = 1)
+        public Task<List<IWykopItem>> Index(int page = 1)
         {
             throw new NotImplementedException();
         }
@@ -31,7 +31,7 @@ namespace WykopSharpClient.Repository.Fake
             throw new NotImplementedException();
         }
 
-        public Task<List<MyWykop>> Mine(int page = 1)
+        public Task<List<IWykopItem>> Mine(int page = 1)
         {
             throw new NotImplementedException();
         }
@@ -46,7 +46,7 @@ namespace WykopSharpClient.Repository.Fake
             throw new NotImplementedException();
         }
 
-        public Task<List<MyWykop>> Observing(int page = 1)
+        public Task<List<IWykopItem>> Observing(int page = 1)
         {
             throw new NotImplementedException();
         }
@@ -61,17 +61,17 @@ namespace WykopSharpClient.Repository.Fake
             throw new NotImplementedException();
         }
 
-        public Task<List<MyWykop>> Recived(int page = 1)
+        public Task<List<IWykopItem>> Recived(int page = 1)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<MyWykop>> Tags(int page = 1)
+        public Task<List<IWykopItem>> Tags(int page = 1)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<MyWykop>> Users(int page = 1)
+        public Task<List<IWykopItem>> Users(int page = 1)
         {
             throw new NotImplementedException();
         }

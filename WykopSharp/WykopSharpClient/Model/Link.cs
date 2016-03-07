@@ -53,10 +53,10 @@ namespace WykopSharpClient.Model
         public Uri AuthorAvatarBig { get; set; }
 
         [JsonProperty(PropertyName = "author_avatar_med")]
-        public Uri AuthorAvatarMed { get; set; }
+        public Uri AuthorAvatarMedium { get; set; }
 
         [JsonProperty(PropertyName = "author_avatar_lo")]
-        public Uri AuthorAvatarLo { get; set; }
+        public Uri AuthorAvatarLow { get; set; }
 
         [JsonProperty(PropertyName = "author_sex")]
         public string AuthorSex { get; set; }

@@ -9,16 +9,16 @@ namespace WykopSharpClient.Repository.Interface
     {
         Task<List<Notification>> HashTagsNotifications(int page = 1);
         Task<RecivedCount> HashTagsNotificationsCount();
-        Task<List<MyWykop>> Index(int page = 1);
+        Task<List<IWykopItem>> Index(int page = 1);
         Task<BooleanModel> MarkAsReadNotification(int notificationId);
-        Task<List<MyWykop>> Mine(int page = 1);
+        Task<List<IWykopItem>> Mine(int page = 1);
         Task<List<Notification>> Notifications(int page = 1);
         Task<RecivedCount> NotificationsCount();
-        Task<List<MyWykop>> Observing(int page = 1);
+        Task<List<IWykopItem>> Observing(int page = 1);
         Task<object> ReadHashTagNotification();
         Task<object> ReadNotification();
-        Task<List<MyWykop>> Recived(int page = 1);
-        Task<List<MyWykop>> Tags(int page = 1);
-        Task<List<MyWykop>> Users(int page = 1);
+        Task<List<IWykopItem>> Recived(int page = 1);
+        Task<List<IWykopItem>> Tags(int page = 1);
+        Task<List<IWykopItem>> Users(int page = 1);
     }
 }

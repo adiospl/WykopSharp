@@ -21,10 +21,10 @@ namespace WykopSharpClient.Model
         public Uri AuthorAvatarBig { get; set; }
 
         [JsonProperty(PropertyName = "author_avatar_med")]
-        public Uri AuthorAvatarMed { get; set; }
+        public Uri AuthorAvatarMedium { get; set; }
 
         [JsonProperty(PropertyName = "author_avatar_lo")]
-        public Uri AuthorAvatarLo { get; set; }
+        public Uri AuthorAvatarLow { get; set; }
 
         [JsonProperty(PropertyName = "author_group")]
         public UserType AuthorGroup { get; set; }
@@ -74,9 +74,9 @@ namespace WykopSharpClient.Model
         [JsonProperty(PropertyName = "vote_count")]
         public int VoteCount { get; set; }
 
-        [JsonConverter(typeof(DigStatusConverter))]
+        // [JsonConverter(typeof(DigStatusConverter))]
         [JsonProperty(PropertyName = "user_vote")]
-        public DigStatus UserVote { get; set; }
+        public int UserVote { get; set; }
 
         [JsonProperty(PropertyName = "user_favorite")]
         public bool UserFavorite { get; set; }

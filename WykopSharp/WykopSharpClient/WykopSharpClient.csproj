@@ -119,10 +119,12 @@
     <Compile Include="Exception\ApiClientIsNotSupportedException.cs" />
     <Compile Include="IWykopSharpClient.cs" />
     <Compile Include="Model\BuryReason.cs" />
+    <Compile Include="Model\Constants\CommentStatus.cs" />
     <Compile Include="Model\Constants\ConversationStatus.cs" />
     <Compile Include="Model\Constants\DigStatus.cs" />
     <Compile Include="Model\Constants\EmbedType.cs" />
     <Compile Include="Model\Constants\NotificationType.cs" />
+    <Compile Include="Model\Constants\UserVote.cs" />
     <Compile Include="Model\Constants\WykopType.cs" />
     <Compile Include="Model\IWykopItem.cs" />
     <Compile Include="Model\PopularTag.cs" />
